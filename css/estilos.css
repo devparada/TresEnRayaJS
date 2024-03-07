@@ -4,17 +4,30 @@
 }
 
 table {
-    margin-top: 10px;
+    margin-top: 20px;
     width: 20%;
 }
 
+input[type="button"] {
+    padding: 60px;
+    padding-top: 41px;
+    padding-bottom: 41px;
+    border: 0;
+    background-color: white;
+}
+
+#titulo {
+    font-size: 40px;
+}
+
 #contenedor {
+    margin-top: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.celda {
-    padding-top: 15px;
-    padding-bottom: 15px;
+#resultado {
+    margin-top: 10px;
+    font-weight: bold;
 }
