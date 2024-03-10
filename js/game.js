@@ -2,15 +2,15 @@ const celdas = document.querySelectorAll("td");
 var click = 0;
 var finPartida = false;
 
-function addEvent(celdas) {
+function addEvento(celdas) {
     celdas.forEach((celda) => {
         celda.addEventListener("click", (e) => {
-            let boton = e.target;
-            if (comprobarValido(boton) && comprobarValido(boton)) {
+            var boton = e.target;
+            if (comprobarValido(boton) && !comprobarGanador()) {
                 primerJugador(boton.id);
+                comprobarGanador();
                 segundoJugadorCPU();
-            } else if (!comprobarValido(boton)) {
-                findePartida();
+                comprobarGanador();
             }
         })
     });
@@ -32,9 +32,26 @@ function segundoJugadorCPU() {
         click++;
     } else if (click <= 3) {
         segundoJugadorCPU();
+        comprobarEstadoPartida(false);
     } else {
-        comprobarEstadoPartida();
+        comprobarGanador();
+        comprobarEstadoPartida(true);
     }
+}
+
+function mostrarEmpate() {
+    if (finPartida) {
+        document.getElementById("resultado").innerText = "Empate";
+    }
+}
+
+function mostrarResultado(estado) {
+    if (estado) {
+        document.getElementById("resultado").innerText = "Has ganado";
+    } else {
+        document.getElementById("resultado").innerText = "Has perdido";
+    }
+    comprobarEstadoPartida(false);
 }
 
 function comprobarValido(celda) {
@@ -44,26 +61,91 @@ function comprobarValido(celda) {
     return false;
 }
 
-function comprobarEstadoPartida() {
-    celdas.forEach((celda) => {
-        console.log(celda.children[0]);
-        if (celda.children[0].getAttribute("value") != null) {
-            finPartida = true;
-            findePartida();
-        } else {
-            finPartida = false;
-            return true;
-        }
-    });
-
-    return false;
-}
-
-function findePartida() {
-    console.log("Depuración: " + finPartida);
-    if (finPartida) {
-        document.getElementById("resultado").innerText = "Fin de partida";
+function comprobarEstadoPartida(estado) {
+    if (estado) {
+        celdas.forEach((celda) => {
+            if (celda.children[0].getAttribute("value") != null) {
+                finPartida = true;
+                mostrarEmpate();
+            } else {
+                finPartida = false;
+            }
+        });
+    } else {
+        celdas.forEach((celda) => {
+            celda.setAttribute("disable", "");
+        });
     }
 }
 
-addEvent(celdas);
+function comprobarGanador() {
+    if (celdas[0].children[0].value == "X" && celdas[4].children[0].value == "X" && celdas[8].children[0].value == "X") {
+        mostrarResultado(true);
+        return true;
+    } else if (celdas[0].children[0].value == "O" && celdas[4].children[0].value == "O" && celdas[8].children[0].value == "O") {
+        mostrarResultado(false);
+        return true;
+    }
+
+    if (celdas[0].children[0].value == "X" && celdas[3].children[0].value == "X" && celdas[6].children[0].value == "X") {
+        mostrarResultado(true);
+        return true;
+    } else if (celdas[0].children[0].value == "O" && celdas[3].children[0].value == "O" && celdas[6].children[0].value == "O") {
+        mostrarResultado(false);
+        return true;
+    }
+
+    if (celdas[0].children[0].value == "X" && celdas[1].children[0].value == "X" && celdas[2].children[0].value == "X") {
+        mostrarResultado(true);
+        return true;
+    } else if (celdas[0].children[0].value == "O" && celdas[1].children[0].value == "O" && celdas[2].children[0].value == "O") {
+        mostrarResultado(false);
+        return true;
+    }
+
+    if (celdas[0].children[0].value == "X" && celdas[4].children[0].value == "X" && celdas[8].children[0].value == "X") {
+        mostrarResultado(true);
+        return true;
+    } else if (celdas[0].children[0].value == "O" && celdas[4].children[0].value == "O" && celdas[8].children[0].value == "O") {
+        mostrarResultado(false);
+        return true;
+    }
+
+    if (celdas[2].children[0].value == "X" && celdas[5].children[0].value == "X" && celdas[8].children[0].value == "X") {
+        mostrarResultado(true);
+        return true;
+    } else if (celdas[2].children[0].value == "O" && celdas[5].children[0].value == "O" && celdas[8].children[0].value == "O") {
+        mostrarResultado(false);
+        return true;
+    }
+
+    if (celdas[2].children[0].value == "X" && celdas[4].children[0].value == "X" && celdas[6].children[0].value == "X") {
+        mostrarResultado(true);
+        return true;
+    } else if (celdas[2].children[0].value == "O" && celdas[4].children[0].value == "O" && celdas[6].children[0].value == "O") {
+        mostrarResultado(false);
+        return true;
+    }
+
+
+    if (celdas[3].children[0].value == "X" && celdas[4].children[0].value == "X" && celdas[5].children[0].value == "X") {
+        mostrarResultado(true);
+        return true;
+    } else if (celdas[3].children[0].value == "O" && celdas[4].children[0].value == "O" && celdas[5].children[0].value == "O") {
+        mostrarResultado(false);
+        return true;
+    }
+
+    if (celdas[6].children[0].value == "X" && celdas[7].children[0].value == "X" && celdas[8].children[0].value == "X") {
+        mostrarResultado(true);
+        return true;
+    } else if (celdas[6].children[0].value == "O" && celdas[7].children[0].value == "O" && celdas[8].children[0].value == "O") {
+        mostrarResultado(false);
+        return true;
+    }
+
+    mostrarEmpate();
+    return false;
+}
+
+addEvento(celdas);
