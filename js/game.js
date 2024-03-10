@@ -23,7 +23,7 @@ function primerJugador(boton) {
 
 function segundoJugadorCPU() {
     var numero = Math.floor(Math.random() * (8 - 0 + 1) + 0);
-    var nombreElemento = "texto" + numero;
+    var nombreElemento = "boton" + numero;
     var elemento = document.getElementById(nombreElemento);
 
     if (elemento.value != "O" && elemento.value != "X") {
