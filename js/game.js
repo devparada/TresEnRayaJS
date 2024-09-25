@@ -79,69 +79,25 @@ function comprobarEstadoPartida(estado) {
 }
 
 function comprobarGanador() {
-    if (celdas[0].children[0].value == "X" && celdas[4].children[0].value == "X" && celdas[8].children[0].value == "X") {
-        mostrarResultado(true);
-        return true;
-    } else if (celdas[0].children[0].value == "O" && celdas[4].children[0].value == "O" && celdas[8].children[0].value == "O") {
-        mostrarResultado(false);
-        return true;
-    }
+    var combinacionesGanadoras = [
+        [0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8],
+        [0, 3, 6],
+        [1, 4, 7],
+        [2, 5, 8],
+        [0, 4, 8],
+        [2, 4, 6],
+    ];
 
-    if (celdas[0].children[0].value == "X" && celdas[3].children[0].value == "X" && celdas[6].children[0].value == "X") {
-        mostrarResultado(true);
-        return true;
-    } else if (celdas[0].children[0].value == "O" && celdas[3].children[0].value == "O" && celdas[6].children[0].value == "O") {
-        mostrarResultado(false);
-        return true;
-    }
-
-    if (celdas[0].children[0].value == "X" && celdas[1].children[0].value == "X" && celdas[2].children[0].value == "X") {
-        mostrarResultado(true);
-        return true;
-    } else if (celdas[0].children[0].value == "O" && celdas[1].children[0].value == "O" && celdas[2].children[0].value == "O") {
-        mostrarResultado(false);
-        return true;
-    }
-
-    if (celdas[0].children[0].value == "X" && celdas[4].children[0].value == "X" && celdas[8].children[0].value == "X") {
-        mostrarResultado(true);
-        return true;
-    } else if (celdas[0].children[0].value == "O" && celdas[4].children[0].value == "O" && celdas[8].children[0].value == "O") {
-        mostrarResultado(false);
-        return true;
-    }
-
-    if (celdas[2].children[0].value == "X" && celdas[5].children[0].value == "X" && celdas[8].children[0].value == "X") {
-        mostrarResultado(true);
-        return true;
-    } else if (celdas[2].children[0].value == "O" && celdas[5].children[0].value == "O" && celdas[8].children[0].value == "O") {
-        mostrarResultado(false);
-        return true;
-    }
-
-    if (celdas[2].children[0].value == "X" && celdas[4].children[0].value == "X" && celdas[6].children[0].value == "X") {
-        mostrarResultado(true);
-        return true;
-    } else if (celdas[2].children[0].value == "O" && celdas[4].children[0].value == "O" && celdas[6].children[0].value == "O") {
-        mostrarResultado(false);
-        return true;
-    }
-
-
-    if (celdas[3].children[0].value == "X" && celdas[4].children[0].value == "X" && celdas[5].children[0].value == "X") {
-        mostrarResultado(true);
-        return true;
-    } else if (celdas[3].children[0].value == "O" && celdas[4].children[0].value == "O" && celdas[5].children[0].value == "O") {
-        mostrarResultado(false);
-        return true;
-    }
-
-    if (celdas[6].children[0].value == "X" && celdas[7].children[0].value == "X" && celdas[8].children[0].value == "X") {
-        mostrarResultado(true);
-        return true;
-    } else if (celdas[6].children[0].value == "O" && celdas[7].children[0].value == "O" && celdas[8].children[0].value == "O") {
-        mostrarResultado(false);
-        return true;
+    for (let i = 0; i < combinacionesGanadoras.length; i++) {
+        if (celdas[combinacionesGanadoras[i][0]].children[0].value == "X" && celdas[combinacionesGanadoras[i][1]].children[0].value == "X" && celdas[combinacionesGanadoras[i][2]].children[0].value == "X") {
+            mostrarResultado(true);
+            return true;
+        } else if (celdas[combinacionesGanadoras[i][0]].children[0].value == "O" && celdas[combinacionesGanadoras[i][1]].children[0].value == "O" && celdas[combinacionesGanadoras[i][2]].children[0].value == "O") {
+            mostrarResultado(false);
+            return true;
+        }
     }
 
     mostrarEmpate();
