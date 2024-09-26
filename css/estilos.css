@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap');
+
 * {
     margin: 0;
     padding: 0;
+    font-family: "Roboto", sans-serif;
 }
 
 table {
@@ -21,17 +24,17 @@ input[type="button"] {
 }
 
 #contenedor {
-    margin-top: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    /* Para que se muestre centrado verticalmente el contenedor el height es del 100vh (es el viewport que es la pantalla) */
-    height: 100vh;
+    /* Para que se muestre centrado verticalmente el contenedor el height es del 90vh (es el viewport que es la pantalla) */
+    height: 90vh;
 }
 
 #resultado {
     margin-top: 10px;
+    margin-bottom: 0px;
     font-weight: bold;
 }
 
@@ -41,6 +44,4 @@ input[type="button"] {
     padding-bottom: 5px;
     padding-left: 10px;
     padding-right: 10px;
-    border-radius: 10px;
-    border: 1px solid gray;
 }
