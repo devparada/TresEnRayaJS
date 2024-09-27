@@ -8,7 +8,7 @@
 
 table {
     margin-top: 20px;
-    width: 20%;
+    border-color: black;
 }
 
 input[type="button"] {
@@ -17,10 +17,6 @@ input[type="button"] {
     padding-bottom: 41px;
     border: 0;
     background-color: white;
-}
-
-#titulo {
-    font-size: 40px;
 }
 
 #contenedor {
