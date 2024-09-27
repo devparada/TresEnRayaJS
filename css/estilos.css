@@ -8,14 +8,15 @@
 
 table {
     margin-top: 20px;
-    border-color: black;
+    border-color: black !important;
 }
 
 input[type="button"] {
-    padding: 60px;
-    padding-top: 41px;
-    padding-bottom: 41px;
-    border: 0;
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+    padding-left: 3.25rem;
+    padding-right: 3.25rem;
+    border: none;
     background-color: white;
 }
 
@@ -35,7 +36,6 @@ input[type="button"] {
 }
 
 #botonVolverJugar {
-    margin-top: 10px;
     padding-top: 5px;
     padding-bottom: 5px;
     padding-left: 10px;
