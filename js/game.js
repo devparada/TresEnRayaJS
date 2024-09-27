@@ -1,14 +1,19 @@
+// Variables del script
 const celdas = document.querySelectorAll("td");
-var click = 0;
 var finPartida = false;
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms))
+}
 
 function addEvento(celdas) {
     celdas.forEach((celda) => {
-        celda.addEventListener("click", (e) => {
+        celda.addEventListener("click", async (e) => {
             var boton = e.target;
             if (comprobarValido(boton) && !comprobarGanador()) {
                 primerJugador(boton.id);
                 comprobarGanador();
+                await sleep(250);
                 segundoJugadorCPU();
                 comprobarGanador();
             }
@@ -25,6 +30,7 @@ function segundoJugadorCPU() {
     var numero = Math.floor(Math.random() * (8 - 0 + 1) + 0);
     var nombreElemento = "boton" + numero;
     var elemento = document.getElementById(nombreElemento);
+    var click = 0;
 
     if (elemento.value != "O" && elemento.value != "X") {
         elemento.value = "O";
