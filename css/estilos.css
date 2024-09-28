@@ -3,6 +3,7 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
     font-family: "Roboto", sans-serif;
 }
 
@@ -21,12 +22,12 @@ input[type="button"] {
 }
 
 #contenedor {
+    /* Para que se muestre centrado verticalmente el contenedor usando el min-height que es del 90vh y el flex con align-items y justify-content */
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    /* Para que se muestre centrado verticalmente el contenedor el height es del 90vh (es el viewport que es la pantalla) */
-    height: 90vh;
+    min-height: 90vh;
 }
 
 #resultado {
@@ -40,4 +41,11 @@ input[type="button"] {
     padding-bottom: 5px;
     padding-left: 10px;
     padding-right: 10px;
+}
+
+footer {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
 }
