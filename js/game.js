@@ -51,32 +51,37 @@ function mostrarEmpate() {
     }
 }
 
-function colorearResultado(celda0, celda1, celda2, estado) {
-    // Red
-    let color = "#EB6F6F";
-    if (estado) {
-        // Green
-        color = "#29DC27";
-    }
+async function colorearResultado(celda0, celda1, celda2, estado) {
+    if (!finPartida) {
+        // Red
+        let color = "#EB6F6F";
+        if (estado) {
+            // Green
+            color = "#29DC27";
+        }
+        await sleep(300);
 
-    // Para dar el color a la celda de la tabla
-    celda0.parentElement.style.backgroundColor = color;
-    celda1.parentElement.style.backgroundColor = color;
-    celda2.parentElement.style.backgroundColor = color;
-    // Para dar el color en el input
-    celda0.style.backgroundColor = color;
-    celda1.style.backgroundColor = color;
-    celda2.style.backgroundColor = color;
+        // Para dar el color a la celda de la tabla
+        celda0.parentElement.style.backgroundColor = color;
+        celda1.parentElement.style.backgroundColor = color;
+        celda2.parentElement.style.backgroundColor = color;
+        // Para dar el color en el input
+        celda0.style.backgroundColor = color;
+        celda1.style.backgroundColor = color;
+        celda2.style.backgroundColor = color;
+    }
 }
 
 function mostrarResultado(estado) {
-    let texto = "Has perdido"
-    if (estado) {
-        texto = "Has ganado";
-    }
+    if (!finPartida) {
+        let texto = "Has perdido"
+        if (estado) {
+            texto = "Has ganado";
+        }
 
-    document.getElementById("resultado").innerText = texto;
-    comprobarEstadoPartida(false);
+        document.getElementById("resultado").innerText = texto;
+        comprobarEstadoPartida(false);
+    }
 }
 
 function comprobarValido(celda) {
@@ -116,12 +121,16 @@ function comprobarGanador() {
     ];
 
     for (let i = 0; i < combinacionesGanadoras.length; i++) {
-        if (celdas[combinacionesGanadoras[i][0]].children[0].value == "X" && celdas[combinacionesGanadoras[i][1]].children[0].value == "X" && celdas[combinacionesGanadoras[i][2]].children[0].value == "X") {
-            colorearResultado(celdas[combinacionesGanadoras[i][0]].children[0], celdas[combinacionesGanadoras[i][1]].children[0], celdas[combinacionesGanadoras[i][2]].children[0], true);
+        let primerNumero = celdas[combinacionesGanadoras[i][0]].children[0];
+        let segundoNumero = celdas[combinacionesGanadoras[i][1]].children[0];
+        let tercerNumero = celdas[combinacionesGanadoras[i][2]].children[0];
+
+        if (primerNumero.value == "X" && segundoNumero.value == "X" && tercerNumero.value == "X") {
+            colorearResultado(primerNumero, segundoNumero, tercerNumero, true);
             mostrarResultado(true);
             return true;
-        } else if (celdas[combinacionesGanadoras[i][0]].children[0].value == "O" && celdas[combinacionesGanadoras[i][1]].children[0].value == "O" && celdas[combinacionesGanadoras[i][2]].children[0].value == "O") {
-            colorearResultado(celdas[combinacionesGanadoras[i][0]].children[0], celdas[combinacionesGanadoras[i][1]].children[0], celdas[combinacionesGanadoras[i][2]].children[0], false);
+        } else if (primerNumero.value == "O" && segundoNumero.value == "O" && tercerNumero.value == "O") {
+            colorearResultado(primerNumero, segundoNumero, tercerNumero, false);
             mostrarResultado(false);
             return true;
         }
