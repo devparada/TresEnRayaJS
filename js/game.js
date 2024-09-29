@@ -1,6 +1,7 @@
 // Variables del script
 const celdas = document.querySelectorAll("td");
 var finPartida = false;
+var click = 0;
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms))
@@ -30,7 +31,6 @@ function segundoJugadorCPU() {
     var numero = Math.floor(Math.random() * (8 - 0 + 1) + 0);
     var nombreElemento = "boton" + numero;
     var elemento = document.getElementById(nombreElemento);
-    var click = 0;
 
     if (elemento.value != "O" && elemento.value != "X") {
         elemento.value = "O";
@@ -51,12 +51,31 @@ function mostrarEmpate() {
     }
 }
 
-function mostrarResultado(estado) {
+function colorearResultado(celda0, celda1, celda2, estado) {
+    // Red
+    let color = "#EB6F6F";
     if (estado) {
-        document.getElementById("resultado").innerText = "Has ganado";
-    } else {
-        document.getElementById("resultado").innerText = "Has perdido";
+        // Green
+        color = "#29DC27";
     }
+
+    // Para dar el color a la celda de la tabla
+    celda0.parentElement.style.backgroundColor = color;
+    celda1.parentElement.style.backgroundColor = color;
+    celda2.parentElement.style.backgroundColor = color;
+    // Para dar el color en el input
+    celda0.style.backgroundColor = color;
+    celda1.style.backgroundColor = color;
+    celda2.style.backgroundColor = color;
+}
+
+function mostrarResultado(estado) {
+    let texto = "Has perdido"
+    if (estado) {
+        texto = "Has ganado";
+    }
+
+    document.getElementById("resultado").innerText = texto;
     comprobarEstadoPartida(false);
 }
 
@@ -98,9 +117,11 @@ function comprobarGanador() {
 
     for (let i = 0; i < combinacionesGanadoras.length; i++) {
         if (celdas[combinacionesGanadoras[i][0]].children[0].value == "X" && celdas[combinacionesGanadoras[i][1]].children[0].value == "X" && celdas[combinacionesGanadoras[i][2]].children[0].value == "X") {
+            colorearResultado(celdas[combinacionesGanadoras[i][0]].children[0], celdas[combinacionesGanadoras[i][1]].children[0], celdas[combinacionesGanadoras[i][2]].children[0], true);
             mostrarResultado(true);
             return true;
         } else if (celdas[combinacionesGanadoras[i][0]].children[0].value == "O" && celdas[combinacionesGanadoras[i][1]].children[0].value == "O" && celdas[combinacionesGanadoras[i][2]].children[0].value == "O") {
+            colorearResultado(celdas[combinacionesGanadoras[i][0]].children[0], celdas[combinacionesGanadoras[i][1]].children[0], celdas[combinacionesGanadoras[i][2]].children[0], false);
             mostrarResultado(false);
             return true;
         }
