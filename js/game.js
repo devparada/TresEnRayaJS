@@ -10,9 +10,9 @@ function sleep(ms) {
 function addEvento(celdas) {
     celdas.forEach((celda) => {
         celda.addEventListener("click", async (e) => {
-            var boton = e.target;
-            if (comprobarValido(boton) && !comprobarGanador()) {
-                primerJugador(boton.id);
+            var celda = e.target;
+            if (comprobarValido(celda) && !comprobarGanador()) {
+                primerJugador(celda.id);
                 comprobarGanador();
                 await sleep(250);
                 segundoJugadorCPU();
@@ -22,14 +22,15 @@ function addEvento(celdas) {
     });
 }
 
-function primerJugador(boton) {
-    document.getElementById(boton).value = "X";
-    document.getElementById(boton).setAttribute("disable", "");
+function primerJugador(celda) {
+    document.getElementById(celda).value = "X";
+    document.getElementById(celda).setAttribute("disable", "");
 }
 
 function segundoJugadorCPU() {
-    var numero = Math.floor(Math.random() * (8 - 0 + 1) + 0);
-    var nombreElemento = "boton" + numero;
+    var maxNumero = celdas.length - 1;
+    var numero = Math.floor(Math.random() * (maxNumero - 0 + 1) + 0);
+    var nombreElemento = "celda" + numero;
     var elemento = document.getElementById(nombreElemento);
 
     if (elemento.value != "O" && elemento.value != "X") {
@@ -85,7 +86,8 @@ function mostrarResultado(estado) {
 }
 
 function comprobarValido(celda) {
-    if (document.getElementById(celda.id).getAttribute("value") == undefined) {
+    // \u00A0 -> es &nbsp; (un espacio)
+    if (document.getElementById(celda.id).getAttribute("value") == "\u00A0\u00A0\u00A0") {
         return true;
     }
     return false;
@@ -94,7 +96,7 @@ function comprobarValido(celda) {
 function comprobarEstadoPartida(estado) {
     if (estado) {
         celdas.forEach((celda) => {
-            if (celda.children[0].getAttribute("value") != null) {
+            if (comprobarValido(celda)) {
                 finPartida = true;
                 mostrarEmpate();
             } else {
