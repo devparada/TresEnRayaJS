@@ -1,5 +1,6 @@
 // Variables del script
 const celdas = document.querySelectorAll("td");
+const elemResultado = document.getElementById("resultado");
 var finPartida = false;
 var click = 0;
 
@@ -14,7 +15,6 @@ function addEvento(celdas) {
             if (comprobarValido(celda) && !comprobarGanador()) {
                 primerJugador(celda.id);
                 comprobarGanador();
-                await sleep(250);
                 segundoJugadorCPU();
                 comprobarGanador();
             }
@@ -48,7 +48,7 @@ function segundoJugadorCPU() {
 
 function mostrarEmpate() {
     if (finPartida) {
-        document.getElementById("resultado").innerText = "Empate";
+        elemResultado.innerText = "Empate";
     }
 }
 
@@ -60,7 +60,7 @@ async function colorearResultado(celda0, celda1, celda2, estado) {
             // Green
             color = "#29DC27";
         }
-        await sleep(300);
+        await sleep(150);
 
         // Para dar el color a la celda de la tabla
         celda0.parentElement.style.backgroundColor = color;
@@ -80,7 +80,7 @@ function mostrarResultado(estado) {
             texto = "Has ganado";
         }
 
-        document.getElementById("resultado").innerText = texto;
+        elemResultado.innerText = texto;
         comprobarEstadoPartida(false);
     }
 }
@@ -140,6 +140,18 @@ function comprobarGanador() {
 
     mostrarEmpate();
     return false;
+}
+
+function volverJugar() {
+    celdas.forEach((celda) => {
+        celda.style.backgroundColor = "white";
+        celda.children[0].style.backgroundColor = "white";
+        celda.children[0].value = "\u00A0\u00A0\u00A0";
+    });
+    elemResultado.innerText = "Juega otra vez";
+
+    finPartida = false;
+    click = 0;
 }
 
 addEvento(celdas);
