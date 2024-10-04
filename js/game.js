@@ -82,7 +82,18 @@ function mostrarResultado(estado) {
 }
 
 function mostrarEmpate() {
-    elemResultado.innerText = "Empate";
+    var flag = false;
+
+    celdas.forEach((celda) => {
+        if (celda.style.backgroundColor != "white") {
+            elemResultado.innerText = "Empate";
+            flag = true;
+        }
+    })
+
+    if (!flag) {
+        elemResultado.innerText = "Empate";
+    }
 }
 
 function volverJugar() {
