@@ -10,7 +10,6 @@ function comprobarValido(celda) {
 function comprobarEstadoPartida(estado) {
     if (estado) {
         celdas.forEach((celda) => {
-            console.log(document.getElementById(celda.id));
             if (document.getElementById(celda.id) == null) {
                 finPartida = true;
                 mostrarEmpate();
