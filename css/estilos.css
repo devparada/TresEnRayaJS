@@ -7,10 +7,6 @@
     font-family: "Roboto", sans-serif;
 }
 
-.logo {
-    padding-right: 10px;
-}
-
 table {
     margin-top: 20px;
     border-color: black !important;
@@ -45,4 +41,15 @@ input[type="button"] {
     padding-bottom: 5px;
     padding-left: 10px;
     padding-right: 10px;
+}
+
+/* Para móviles y tablets */
+@media only screen and (max-width: 990px) {
+    .logo {
+        width: 50px;
+    }
+
+    .texto-logo {
+        display: none;
+    }
 }
