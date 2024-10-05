@@ -1,3 +1,5 @@
+/* Este script se utiliza en las páginas cpu.html y 2jugadores.html */
+/* Almacena las constantes, variables y funciones comunes */
 // Constantes
 const celdas = document.querySelectorAll("td");
 const elemResultado = document.getElementById("resultado");
@@ -10,42 +12,9 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms))
 }
 
-function addEvento(celdas) {
-    celdas.forEach((celda) => {
-        celda.addEventListener("click", async (e) => {
-            var celda = e.target;
-            if (comprobarValido(celda) && !comprobarGanador()) {
-                primerJugador(celda.id);
-                comprobarGanador();
-                segundoJugadorCPU();
-                comprobarGanador();
-            }
-        })
-    });
-}
-
 function primerJugador(celda) {
     document.getElementById(celda).value = "X";
     document.getElementById(celda).setAttribute("disable", "");
-}
-
-function segundoJugadorCPU() {
-    var maxNumero = celdas.length - 1;
-    var numero = Math.floor(Math.random() * (maxNumero - 0 + 1) + 0);
-    var nombreElemento = "celda" + numero;
-    var elemento = document.getElementById(nombreElemento);
-
-    if (elemento.value != "O" && elemento.value != "X") {
-        elemento.value = "O";
-        elemento.setAttribute("disable", "");
-        click++;
-    } else if (click <= 3) {
-        segundoJugadorCPU();
-        comprobarEstadoPartida(false);
-    } else {
-        comprobarGanador();
-        comprobarEstadoPartida(true);
-    }
 }
 
 async function colorearResultado(celda0, celda1, celda2, estado) {
@@ -98,5 +67,3 @@ function volverJugar() {
     finPartida = false;
     click = 0;
 }
-
-addEvento(celdas);
