@@ -7,6 +7,10 @@
     font-family: "Roboto", sans-serif;
 }
 
+#boton-codigo {
+    margin-left: 2.68rem;
+}
+
 table {
     margin-top: 20px;
     border-color: black !important;
@@ -43,13 +47,17 @@ input[type="button"] {
     padding-right: 10px;
 }
 
-/* Para móviles y tablets */
-@media only screen and (max-width: 990px) {
+/* Para móviles, tablets y ordenadores */
+@media only screen and (max-width: 1421px) {
     .logo {
         width: 50px;
     }
 
     .texto-logo {
         display: none;
+    }
+
+    #boton-codigo {
+        margin-left: 0rem;
     }
 }
