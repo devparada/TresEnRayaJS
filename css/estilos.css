@@ -7,8 +7,12 @@
     font-family: "Roboto", sans-serif;
 }
 
-#boton-codigo {
-    margin-left: 2.68rem;
+.barra-header {
+    padding: 10px;
+}
+
+#barra-nav {
+    margin: 10px;
 }
 
 table {
@@ -55,9 +59,5 @@ input[type="button"] {
 
     .texto-logo {
         display: none;
-    }
-
-    #boton-codigo {
-        margin-left: 0rem;
     }
 }
