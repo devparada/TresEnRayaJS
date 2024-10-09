@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <title>Tres En Raya Game</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Tres En Raya hecho en JavaScript">
     <meta name="keywords" content="game, JS, public-game">
@@ -22,6 +23,9 @@
     <!-- Favicon -->
     <link rel="icon" href="../img/favicon-16x16.png" sizes="16x16" ttype="image/png">
     <link rel="icon" href="../img/favicon-32x32.png" sizes="32x32" type="image/png">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <!-- Hojas de estilo -->
     <link href="../css/estilos.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
@@ -32,14 +36,13 @@
             integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous"
             rel="stylesheet">
     </noscript>
-    <title>Tres En Raya Game</title>
 </head>
 
 <body>
     <header
         class="barra-header d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 bg-dark border-bottom">
         <a href="/index.html" class="d-flex align-items-center col-md-3 text-decoration-none">
-            <img src="../img/favicon.png" alt="Logotipo" width="70" class="logo">
+            <img src="../img/favicon.png" alt="Logotipo cabecera" width="70" class="logo">
             <p class="text-white mb-0 texto-logo">TresEnRayaJS</p>
         </a>
 
@@ -65,6 +68,7 @@
 
     <main>
         <div class="container" id="contenedor">
+            <img src="../img/favicon.png" alt="Logotipo" width="100">
             <h1>Tres en Raya Game</h1>
             <p>💻 Tú contra el ordenador 💻</p>
             <!-- Las celdas tienen por defecto tres espacios -->
@@ -106,15 +110,16 @@
             <p id="resultado" tabindex="0">Juega</p>
             <button id="botonVolverJugar" class="btn btn-primary mt-2" onclick="volverJugar()">Volver a
                 jugar</button>
-            <script src="../js/game.js" defer></script>
-            <script src="../js/cpu.js" defer></script>
-            <script src="../js/comprobaciones.js" defer></script>
+            <!-- Scripts -->
+            <script src="../js/game.js"></script>
+            <script src="../js/cpu.js"></script>
+            <script src="../js/comprobaciones.js"></script>
         </div>
     </main>
     <footer class="footer border-top text-center bg-dark text-white">
         <div class="container py-3">
             <a href="/index.html">
-                <img src="../img/favicon.png" alt="Logotipo" width="100">
+                <img src="../img/favicon.png" alt="Logotipo pie" width="70">
             </a>
             <p class="mb-0">Hecho por <a href="https://github.com/devparada" class="link-info">devparada</a> ❤️
                 para la comunidad</p>
@@ -122,8 +127,8 @@
         </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"
-        defer></script>
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
