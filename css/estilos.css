@@ -7,6 +7,11 @@
     font-family: "Roboto", "Arial", sans-serif;
 }
 
+header, main, footer, input[type="button"] {
+    background-color: #0a1e30;
+    color: white;
+}
+
 .barra-header {
     padding: 10px;
 }
@@ -22,7 +27,7 @@
 
 table {
     margin-top: 20px;
-    border-color: black !important;
+    border-color: white !important;
 }
 
 input[type="button"] {
@@ -31,7 +36,6 @@ input[type="button"] {
     padding-left: 3.25rem;
     padding-right: 3.25rem;
     border: none;
-    background-color: white;
 }
 
 #contenedor {
@@ -54,6 +58,10 @@ input[type="button"] {
     padding-bottom: 5px;
     padding-left: 10px;
     padding-right: 10px;
+}
+
+#logo-footer {
+    margin-bottom: 10px;
 }
 
 /* Para móviles, tablets y ordenadores */
