@@ -11,6 +11,11 @@
     padding: 10px;
 }
 
+.logo {
+    width: 50px;
+    margin-right: 10px;
+}
+
 #barra-nav {
     margin: 10px;
 }
@@ -54,7 +59,7 @@ input[type="button"] {
 /* Para móviles, tablets y ordenadores */
 @media only screen and (max-width: 1421px) {
     .logo {
-        width: 50px;
+        margin-right: 0px;
     }
 
     .texto-logo {
