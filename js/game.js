@@ -1,8 +1,9 @@
 /* Este script se utiliza en las páginas cpu.html y 2jugadores.html */
 /* Almacena las constantes, variables y funciones comunes */
+"use strict";
 // Constantes
 const celdas = document.querySelectorAll("td");
-const elemResultado = document.getElementById("resultado");
+const elemResultado = document.querySelector("#resultado");
 
 // Variables
 var finPartida = false;
@@ -18,40 +19,37 @@ function primerJugador(celda) {
 }
 
 async function colorearResultado(celda0, celda1, celda2, estado) {
-    if (!finPartida) {
-        // Red
-        let color = "#EB6F6F";
-        if (estado) {
-            // Green
-            color = "#29DC27";
-        }
-        await sleep(150);
-
-        // Para dar el color a la celda de la tabla
-        celda0.parentElement.style.backgroundColor = color;
-        celda1.parentElement.style.backgroundColor = color;
-        celda2.parentElement.style.backgroundColor = color;
-        // Para dar el color en el input
-        celda0.style.backgroundColor = color;
-        celda1.style.backgroundColor = color;
-        celda2.style.backgroundColor = color;
-        // Para dar el color en el texto del input
-        celda0.style.color = "black";
-        celda1.style.color = "black";
-        celda2.style.color = "black";
+    // Red
+    let color = "#EB6F6F";
+    if (estado) {
+        // Green
+        color = "#29DC27";
     }
+    let textColor = "black";
+    await sleep(150);
+
+    // Para dar el color a la celda de la tabla
+    celda0.parentElement.style.backgroundColor = color;
+    celda1.parentElement.style.backgroundColor = color;
+    celda2.parentElement.style.backgroundColor = color;
+    // Para dar el color en el input
+    celda0.style.backgroundColor = color;
+    celda1.style.backgroundColor = color;
+    celda2.style.backgroundColor = color;
+    // Para dar el color en el texto del input
+    celda0.style.color = textColor;
+    celda1.style.color = textColor;
+    celda2.style.color = textColor;
 }
 
 function mostrarResultado(estado) {
-    if (!finPartida) {
-        let texto = "Has perdido"
-        if (estado) {
-            texto = "Has ganado";
-        }
-
-        elemResultado.innerText = texto;
-        comprobarEstadoPartida(false);
+    let texto = "Has perdido"
+    if (estado) {
+        texto = "Has ganado";
     }
+
+    elemResultado.innerText = texto;
+    comprobarEstadoPartida(false);
 }
 
 function mostrarEmpate() {
@@ -64,6 +62,7 @@ function volverJugar() {
     celdas.forEach((celda) => {
         celda.style.backgroundColor = "white";
         celda.children[0].style.backgroundColor = "#0a1e30";
+        celda.children[0].style.color = "white";
         celda.children[0].value = "\u00A0\u00A0\u00A0";
     });
     elemResultado.innerText = "Juega otra vez";
@@ -116,10 +115,12 @@ function comprobarGanador() {
         let tercerNumero = celdas[combinacionesGanadoras[i][2]].children[0];
 
         if (primerNumero.value == "X" && segundoNumero.value == "X" && tercerNumero.value == "X") {
+            finPartida = true;
             colorearResultado(primerNumero, segundoNumero, tercerNumero, true);
             mostrarResultado(true);
             comprobarFlag = true;
         } else if (primerNumero.value == "O" && segundoNumero.value == "O" && tercerNumero.value == "O") {
+            finPartida = true;
             colorearResultado(primerNumero, segundoNumero, tercerNumero, false);
             mostrarResultado(false);
             comprobarFlag = true;

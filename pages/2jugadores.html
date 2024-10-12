@@ -45,21 +45,40 @@
             <p class="text-white mb-0 texto-logo">TresEnRayaJS</p>
         </a>
 
-        <nav id="barra-nav">
-            <ul class="nav nav-pills">
-                <li class="nav-item">
-                    <a href="../index.html" class="nav-link text-white">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a href="cpu.html" class="nav-link text-white">CPU</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link text-white active" aria-current="active">2 jugadores</a>
-                </li>
-            </ul>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid d-flex justify-content-between align-items-center">
+                <a class="enlace-movil navbar-brand align-items-center" href="#">
+                    <img src="../img/favicon.png" alt="Logotipo cabecera móvil" width="50"
+                        class="d-inline-block align-text-top logo">
+                    <p class="text-white mb-0">TresEnRayaJS</p>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMovil"
+                    aria-controls="navbarMovil" aria-expanded="false" aria-label="Alternar la navegación">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse mt-1" id="navbarMovil">
+                    <ul class="nav-pills navbar-nav d-flex flex-row align-items-center justify-content-center">
+                        <li class="nav-item">
+                            <a href="/index.html" class="nav-link text-white">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="cpu.html" class="nav-link text-white">CPU</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link text-white active" aria-current="active">2
+                                jugadores</a>
+                        </li>
+                        <li class="nav-item" id="boton-code-movil">
+                            <button type="button" class="btn btn-info"
+                                onclick="window.open('https://github.com/devparada/TresEnRayaJS')">Código
+                                fuente</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </nav>
 
-        <div class="col-md-3 text-end">
+        <div class="col-md-3 text-end" id="boton-code">
             <button type="button" class="btn btn-info"
                 onclick="window.open('https://github.com/devparada/TresEnRayaJS')">Código fuente</button>
         </div>

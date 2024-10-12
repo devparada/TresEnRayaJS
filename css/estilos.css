@@ -12,19 +12,6 @@ header, main, footer, input[type="button"] {
     color: white;
 }
 
-.barra-header {
-    padding: 10px;
-}
-
-.logo {
-    width: 50px;
-    margin-right: 10px;
-}
-
-#barra-nav {
-    margin: 10px;
-}
-
 table {
     margin-top: 20px;
     border-color: white !important;
@@ -37,6 +24,33 @@ input[type="button"] {
     padding-right: 3.25rem;
     border: none;
 }
+
+/* Header */
+
+.barra-header {
+    padding: 10px;
+}
+
+.enlace-movil, #boton-code-movil {
+    display: none;
+}
+
+.logo {
+    width: 50px;
+    margin-right: 10px;
+}
+
+/* Nav */
+
+#barra-nav {
+    margin: 10px;
+}
+
+.navbar-nav {
+    display: flex;
+}
+
+/* Main */
 
 #contenedor {
     /* Para que se muestre centrado verticalmente el contenedor usando el min-height que es del 90vh y el flex con align-items y justify-content */
@@ -60,17 +74,53 @@ input[type="button"] {
     padding-right: 10px;
 }
 
+/* Footer */
+
 #logo-footer {
     margin-bottom: 10px;
 }
 
 /* Para móviles, tablets y ordenadores */
-@media only screen and (max-width: 1421px) {
-    .logo {
-        margin-right: 0px;
+@media only screen and (max-width: 998px) {
+
+    /* Header */
+    .logo, .texto-logo, #boton-code {
+        display: none;
     }
 
-    .texto-logo {
-        display: none;
+    #boton-code-movil {
+        display: block;
+    }
+
+    #boton-code-movil a {
+        padding: 0.28rem;
+    }
+
+    /* Nav */
+
+    .navbar {
+        width: 100%;
+    }
+
+    .enlace-movil {
+        display: flex;
+    }
+
+    .navbar-brand, .navbar-nav {
+        gap: 0.25rem;
+    }
+
+    .navbar-nav li a {
+        padding: 0.3rem;
+    }
+
+    /* Icono de hamburguesa de color blanco */
+    .navbar-toggler-icon {
+        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='%23ffffff' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E") !important;
+    }
+
+    /* Elimina el borde y la sombra al hacer clic */
+    .navbar-toggler:focus {
+        box-shadow: none !important;
     }
 }
