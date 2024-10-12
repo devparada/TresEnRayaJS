@@ -1,4 +1,5 @@
 /* Este script se utiliza en la página cpu.html */
+"use strict";
 /* Las constantes, variables y funciones están en game.js */
 function addEvento(celdas) {
     celdas.forEach((celda) => {
