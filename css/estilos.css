@@ -10,6 +10,10 @@ header, main, footer, input[type="button"] {
     color: white;
 }
 
+header {
+    background-color: #172a45;
+}
+
 body {
     /* Para que el footer se muestre abajo */
     display: grid;
@@ -40,7 +44,7 @@ input[type="button"] {
 
 /* Header */
 
-.enlace-movil, #boton-code-movil {
+.enlace-movil {
     display: none;
 }
 
@@ -49,15 +53,14 @@ input[type="button"] {
     margin-right: 10px;
 }
 
+.botones {
+    border-radius: 30px !important;
+}
+
 /* Nav */
 
 .navbar-nav {
     display: flex;
-}
-
-.navbar-nav li {
-    padding-left: 10px;
-    padding-right: 10px;
 }
 
 /* Main */
@@ -83,32 +86,19 @@ main div {
     padding-right: 10px;
 }
 
-/* Footer */
-
-/* Imagen del logo del footer */
-footer div img {
-    margin-bottom: 10px;
+.footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: 10px;
+    text-align: center;
 }
 
 /* Para móviles, tablets y ordenadores */
 @media only screen and (max-width: 988px) {
 
-    body {
-        min-height: 96vh;
-    }
-
     /* Header */
 
     .logo, .texto-logo, #boton-code {
         display: none;
-    }
-
-    #boton-code-movil {
-        display: block;
-    }
-
-    #boton-code-movil a {
-        padding: 0.28rem;
     }
 
     /* Nav */
