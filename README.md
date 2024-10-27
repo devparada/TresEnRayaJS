@@ -7,11 +7,11 @@
 </div>
 
 > [!NOTE]
-> El ordenador (CPU) de momento no es muy inteligente, pero se irá mejorando con el tiempo.
+> El ordenador (CPU) de momento no es muy inteligente, pero tengo como objetivo ir mejorando su inteligencia con el tiempo.
 
 Este repositorio es un tres en raya hecho con HTML, CSS, Bootstrap y JavaScript el cual el usuario puede ganar o perder contra el ordenador (CPU) o contra un jugador en la misma pantalla. La lógica está hecha usando JavaScript vanilla.
 
-También el diseño está en progreso usando Bootstrap y CSS.
+El diseño está hecho usando Bootstrap y CSS.
 
 # Tecnologias
 
