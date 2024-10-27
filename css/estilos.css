@@ -40,10 +40,6 @@ input[type="button"] {
 
 /* Header */
 
-.barra-header {
-    padding: 10px;
-}
-
 .enlace-movil, #boton-code-movil {
     display: none;
 }
@@ -54,10 +50,6 @@ input[type="button"] {
 }
 
 /* Nav */
-
-#barra-nav {
-    margin: 10px;
-}
 
 .navbar-nav {
     display: flex;
