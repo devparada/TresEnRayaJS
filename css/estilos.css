@@ -128,4 +128,11 @@ main div {
     .navbar-toggler:focus {
         box-shadow: none !important;
     }
+
+    /* Main */
+
+    main {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
 }
