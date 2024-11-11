@@ -1,0 +1,30 @@
+{
+  "name": "Tres En Raya JS",
+  "short_name": "TresEnRayaJS",
+  "start_url": "/",
+  "display": "fullscreen",
+  "background_color": "#0a1e30",
+  "theme_color": "#000000",
+  "icons": [
+    {
+      "src": "img/icon-144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "img/screenshot-1280.png",
+      "sizes": "1280x640",
+      "type": "image/png",
+      "form_factor": "wide"
+    },
+    {
+      "src": "img/screenshot-360.png",
+      "sizes": "360x744",
+      "type": "image/png",
+      "form_factor": "narrow"
+    }
+  ]
+}
