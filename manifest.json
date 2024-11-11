@@ -1,10 +1,13 @@
 {
+  "id": "/",
   "name": "Tres En Raya JS",
   "short_name": "TresEnRayaJS",
+  "description": "Tres En Raya hecho en JavaScript",
   "start_url": "/",
-  "display": "fullscreen",
+  "display": "standalone",
   "background_color": "#0a1e30",
   "theme_color": "#000000",
+  "orientation": "portrait",
   "icons": [
     {
       "src": "img/icon-144.png",
