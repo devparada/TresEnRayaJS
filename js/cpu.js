@@ -7,14 +7,15 @@ function addEvento(celdas) {
             var celda = e.target;
             if (comprobarValido(celda) && !comprobarGanador()) {
                 primerJugador(celda.id);
-                comprobarGanador();
-                segundoJugador(celda.id);
-                comprobarGanador();
+                if (!comprobarGanador() || comprobarEstadoPartida()) {
+                    segundoJugador(celda.id);
+                    comprobarEstadoPartida();
+                    comprobarGanador();
+                }
             }
         })
     });
 }
-
 
 function segundoJugador() {
     var maxNumero = celdas.length - 1;
@@ -24,7 +25,7 @@ function segundoJugador() {
 
     if (elemento.value != "O" && elemento.value != "X") {
         elemento.value = "O";
-        elemento.setAttribute("disable", "");
+        elemento.setAttribute("disabled", "");
         click++;
     } else if (click <= 3) {
         segundoJugador();

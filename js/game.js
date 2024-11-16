@@ -15,7 +15,7 @@ function sleep(ms) {
 
 function primerJugador(celda) {
     document.getElementById(celda).value = "X";
-    document.getElementById(celda).setAttribute("disable", "");
+    document.getElementById(celda).setAttribute("disabled", "");
 }
 
 async function colorearResultado(celda0, celda1, celda2, estado) {
@@ -49,13 +49,6 @@ function mostrarResultado(estado) {
     }
 
     elemResultado.innerText = texto;
-    comprobarEstadoPartida(false);
-}
-
-function mostrarEmpate() {
-    if (!comprobarGanador) {
-        elemResultado.innerText = "Empate";
-    }
 }
 
 function volverJugar() {
@@ -79,20 +72,18 @@ function comprobarValido(celda) {
     return false;
 }
 
-function comprobarEstadoPartida(estado) {
-    if (estado) {
-        celdas.forEach((celda) => {
-            if (document.getElementById(celda.id) == null) {
-                finPartida = true;
-                mostrarEmpate();
-            } else {
-                finPartida = false;
-            }
-        });
-    } else {
-        celdas.forEach((celda) => {
-            celda.setAttribute("disable", "");
-        });
+function comprobarEstadoPartida() {
+    var comprobarEmpate = true;
+    celdas.forEach((celda) => {
+        let valorCelda = celda.children[0]?.value;
+
+        if (!valorCelda || valorCelda.trim() === "") {
+            comprobarEmpate = false;
+        }
+    });
+
+    if (comprobarEmpate && !comprobarGanador()) {
+        elemResultado.innerText = "Empate";
     }
 }
 
@@ -107,7 +98,6 @@ function comprobarGanador() {
         [0, 4, 8],
         [2, 4, 6],
     ];
-    var comprobarFlag = false;
 
     for (let i = 0; i < combinacionesGanadoras.length; i++) {
         let primerNumero = celdas[combinacionesGanadoras[i][0]].children[0];
@@ -118,15 +108,12 @@ function comprobarGanador() {
             finPartida = true;
             colorearResultado(primerNumero, segundoNumero, tercerNumero, true);
             mostrarResultado(true);
-            comprobarFlag = true;
         } else if (primerNumero.value == "O" && segundoNumero.value == "O" && tercerNumero.value == "O") {
             finPartida = true;
             colorearResultado(primerNumero, segundoNumero, tercerNumero, false);
             mostrarResultado(false);
-            comprobarFlag = true;
         }
     }
 
-    finPartida = comprobarFlag;
-    return comprobarFlag;
+    return finPartida;
 }

@@ -11,7 +11,7 @@ function addEvento(celdas) {
                 } else {
                     segundoJugador(celda.id);
                 }
-                comprobarGanador();
+                comprobarEstadoPartida();
                 click++;
             }
         })
@@ -20,7 +20,7 @@ function addEvento(celdas) {
 
 function segundoJugador(celda) {
     document.getElementById(celda).value = "O";
-    document.getElementById(celda).setAttribute("disable", "");
+    document.getElementById(celda).setAttribute("disabled", "");
 }
 
 addEvento(celdas);
