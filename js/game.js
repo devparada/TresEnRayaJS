@@ -1,13 +1,17 @@
 /* Este script se utiliza en las páginas cpu.html y 2jugadores.html */
 /* Almacena las constantes, variables y funciones comunes */
 "use strict";
+
 // Constantes
-const celdas = document.querySelectorAll("td");
 const elemResultado = document.querySelector("#resultado");
+const fondoCeldas = "#0A1E30";
+// \u00A0 -> es &nbsp; (un espacio)
+const espaciosValor = "\u00A0\u00A0\u00A0";
 
 // Variables
-var finPartida = false;
 var click = 0;
+var finPartida = false;
+var celdas = document.querySelectorAll("td");
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms))
@@ -49,41 +53,40 @@ function mostrarResultado(estado) {
     }
 
     elemResultado.innerText = texto;
+    comprobarEstadoPartida();
+}
+
+function limpiarTablero() {
+    celdas.forEach((celda) => {
+        celda.style.backgroundColor = "white";
+        celda.children[0].style.backgroundColor = fondoCeldas;
+        celda.children[0].style.color = "white";
+        celda.children[0].value = espaciosValor;
+        celda.children[0].removeAttribute("disabled");
+    });
+    celdas = document.querySelectorAll("td");
 }
 
 function volverJugar() {
-    celdas.forEach((celda) => {
-        celda.style.backgroundColor = "white";
-        celda.children[0].style.backgroundColor = "#0a1e30";
-        celda.children[0].style.color = "white";
-        celda.children[0].value = "\u00A0\u00A0\u00A0";
-    });
-    elemResultado.innerText = "Juega otra vez";
+    limpiarTablero();
+    elemResultado.innerText = "Juega";
 
-    finPartida = false;
     click = 0;
+    finPartida = false;
 }
 
 function comprobarValido(celda) {
-    // \u00A0 -> es &nbsp; (un espacio)
-    if (document.getElementById(celda.id).getAttribute("value") == "\u00A0\u00A0\u00A0") {
+    if (document.getElementById(celda.id).getAttribute("value") == espaciosValor) {
         return true;
     }
     return false;
 }
 
 function comprobarEstadoPartida() {
-    var comprobarEmpate = true;
-    celdas.forEach((celda) => {
-        let valorCelda = celda.children[0]?.value;
-
-        if (!valorCelda || valorCelda.trim() === "") {
-            comprobarEmpate = false;
-        }
-    });
-
-    if (comprobarEmpate && !comprobarGanador()) {
-        elemResultado.innerText = "Empate";
+    if (finPartida) {
+        celdas.forEach((celda) => {
+            celda.setAttribute("disabled", "");
+        });
     }
 }
 
@@ -116,4 +119,13 @@ function comprobarGanador() {
     }
 
     return finPartida;
+}
+
+function comprobarEmpate() {
+    for (let i = 0; i < celdas.length; i++) {
+        if (celdas[i].children[0].value == espaciosValor) {
+            return false;
+        }
+    }
+    return true;
 }

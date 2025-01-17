@@ -3,15 +3,21 @@
 /* Las constantes, variables y funciones están en game.js */
 function addEvento(celdas) {
     celdas.forEach((celda) => {
-        celda.addEventListener("click", (e) => {
+        celda.addEventListener("click", async (e) => {
             var celda = e.target;
-            if (comprobarValido(celda) && !comprobarGanador()) {
+            if (comprobarValido(celda) && !comprobarGanador() && !comprobarEmpate()) {
                 primerJugador(celda.id);
                 if (!comprobarGanador() || comprobarEstadoPartida()) {
+                    await sleep(450);
                     segundoJugador(celda.id);
                     comprobarEstadoPartida();
                     comprobarGanador();
                 }
+
+                if (comprobarEmpate()) {
+                    mostrarEmpate();
+                }
+                comprobarEstadoPartida();
             }
         })
     });
