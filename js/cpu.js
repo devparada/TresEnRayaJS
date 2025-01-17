@@ -6,9 +6,16 @@ function addEvento(celdas) {
         celda.addEventListener("click", async (e) => {
             var celda = e.target;
             if (comprobarValido(celda) && !comprobarGanador() && !comprobarEmpate()) {
+
+                if (turnoBloqueado) {
+                    return;
+                }
+
                 primerJugador(celda.id);
                 if (!comprobarGanador() || comprobarEstadoPartida()) {
+                    turnoBloqueado = true;
                     await sleep(450);
+                    turnoBloqueado = false;
                     segundoJugador(celda.id);
                     comprobarEstadoPartida();
                     comprobarGanador();

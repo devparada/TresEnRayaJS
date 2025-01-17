@@ -11,6 +11,7 @@ const espaciosValor = "\u00A0\u00A0\u00A0";
 // Variables
 var click = 0;
 var finPartida = false;
+var turnoBloqueado = false;
 var celdas = document.querySelectorAll("td");
 
 function sleep(ms) {
