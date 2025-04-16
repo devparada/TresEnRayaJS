@@ -36,8 +36,8 @@ function segundoJugador() {
     var nombreElemento = "celda" + numero;
     var elemento = document.getElementById(nombreElemento);
 
-    if (elemento.value != "O" && elemento.value != "X") {
-        elemento.value = "O";
+    if (elemento.innerText != "O" && elemento.innerText != "X") {
+        elemento.innerText = "O";
         elemento.setAttribute("disabled", "");
         click++;
     } else if (click <= 3) {

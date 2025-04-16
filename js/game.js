@@ -4,7 +4,7 @@
 
 // Constantes
 const elemResultado = document.querySelector("#resultado");
-const fondoCeldas = "#0A1E30";
+const fondoCeldas = "rgb(51 65 85 / 0.4)";
 // \u00A0 -> es &nbsp; (un espacio)
 const espaciosValor = "\u00A0\u00A0\u00A0";
 
@@ -12,14 +12,14 @@ const espaciosValor = "\u00A0\u00A0\u00A0";
 var click = 0;
 var finPartida = false;
 var turnoBloqueado = false;
-var celdas = document.querySelectorAll("td");
+var celdas = document.querySelectorAll(".celdas");
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms))
 }
 
 function primerJugador(celda) {
-    document.getElementById(celda).value = "X";
+    document.getElementById(celda).innerText = "X";
     document.getElementById(celda).setAttribute("disabled", "");
 }
 
@@ -33,15 +33,11 @@ async function colorearResultado(celda0, celda1, celda2, estado) {
     let textColor = "black";
     await sleep(150);
 
-    // Para dar el color a la celda de la tabla
-    celda0.parentElement.style.backgroundColor = color;
-    celda1.parentElement.style.backgroundColor = color;
-    celda2.parentElement.style.backgroundColor = color;
-    // Para dar el color en el input
+    // Para dar el color en el botón
     celda0.style.backgroundColor = color;
     celda1.style.backgroundColor = color;
     celda2.style.backgroundColor = color;
-    // Para dar el color en el texto del input
+    // Para dar el color en el texto del botón
     celda0.style.color = textColor;
     celda1.style.color = textColor;
     celda2.style.color = textColor;
@@ -57,15 +53,18 @@ function mostrarResultado(estado) {
     comprobarEstadoPartida();
 }
 
+function mostrarEmpate() {
+    let texto = "Empate"
+    elemResultado.innerText = texto;
+}
+
 function limpiarTablero() {
     celdas.forEach((celda) => {
-        celda.style.backgroundColor = "white";
-        celda.children[0].style.backgroundColor = fondoCeldas;
-        celda.children[0].style.color = "white";
-        celda.children[0].value = espaciosValor;
-        celda.children[0].removeAttribute("disabled");
+        celda.className = "celdas";
+        celda.innerText = espaciosValor;
+        celda.removeAttribute("disabled");
     });
-    celdas = document.querySelectorAll("td");
+    celdas = document.querySelectorAll(".celdas");
 }
 
 function volverJugar() {
@@ -77,7 +76,8 @@ function volverJugar() {
 }
 
 function comprobarValido(celda) {
-    if (document.getElementById(celda.id).getAttribute("value") == espaciosValor) {
+    console.log(celda.innerText);
+    if (celda.innerText == espaciosValor) {
         return true;
     }
     return false;
@@ -104,15 +104,15 @@ function comprobarGanador() {
     ];
 
     for (let i = 0; i < combinacionesGanadoras.length; i++) {
-        let primerNumero = celdas[combinacionesGanadoras[i][0]].children[0];
-        let segundoNumero = celdas[combinacionesGanadoras[i][1]].children[0];
-        let tercerNumero = celdas[combinacionesGanadoras[i][2]].children[0];
+        let primerNumero = celdas[combinacionesGanadoras[i][0]];
+        let segundoNumero = celdas[combinacionesGanadoras[i][1]];
+        let tercerNumero = celdas[combinacionesGanadoras[i][2]];
 
-        if (primerNumero.value == "X" && segundoNumero.value == "X" && tercerNumero.value == "X") {
+        if (primerNumero.innerText == "X" && segundoNumero.innerText == "X" && tercerNumero.innerText == "X") {
             finPartida = true;
             colorearResultado(primerNumero, segundoNumero, tercerNumero, true);
             mostrarResultado(true);
-        } else if (primerNumero.value == "O" && segundoNumero.value == "O" && tercerNumero.value == "O") {
+        } else if (primerNumero.innerText == "O" && segundoNumero.innerText == "O" && tercerNumero.innerText == "O") {
             finPartida = true;
             colorearResultado(primerNumero, segundoNumero, tercerNumero, false);
             mostrarResultado(false);
@@ -124,7 +124,7 @@ function comprobarGanador() {
 
 function comprobarEmpate() {
     for (let i = 0; i < celdas.length; i++) {
-        if (celdas[i].children[0].value == espaciosValor) {
+        if (celdas[i].innerText == espaciosValor) {
             return false;
         }
     }

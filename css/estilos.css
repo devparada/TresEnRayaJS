@@ -34,7 +34,7 @@ table {
     border-color: white !important;
 }
 
-input[type="button"] {
+button {
     padding-top: 2.5rem;
     padding-bottom: 2.5rem;
     padding-left: 3.25rem;
@@ -71,6 +71,23 @@ main div {
     justify-content: center;
     align-items: center;
     text-align: center;
+}
+
+.tablero {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.celdas {
+    background-color: rgb(51 65 85 / 0.4);
+    color: white;
+    border-radius: 10px;
+    border: 1px solid gray;
+    margin: 4px
+}
+
+.celdas:hover {
+    background-color: gray;
 }
 
 #resultado {
