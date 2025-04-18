@@ -60,7 +60,8 @@ function mostrarEmpate() {
 
 function limpiarTablero() {
     celdas.forEach((celda) => {
-        celda.className = "celdas";
+        celda.style.backgroundColor = "";
+        celda.style.color = "";
         celda.innerText = espaciosValor;
         celda.removeAttribute("disabled");
     });
