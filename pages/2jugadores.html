@@ -75,7 +75,8 @@
                             <a href="cpu.html" class="nav-link text-white px-3 py-2">💻 CPU</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link text-white active px-3 py-2" aria-current="active">🧑 2 jugadores</a>
+                            <a href="#" class="nav-link text-white active px-3 py-2" aria-current="active">🧑 2
+                                jugadores</a>
                         </li>
                 </div>
                 </ul>
@@ -89,42 +90,18 @@
             <img src="../img/favicon.png" alt="Logotipo" width="100">
             <h1>Tres en Raya Game</h1>
             <p>🧑 Tú contra otra persona 🧑</p>
-            <!-- Las celdas tienen por defecto tres espacios -->
-            <table class="table-bordered" role="presentation">
-                <tr>
-                    <td class="celda">
-                        <input type="button" id="celda0" value="&nbsp;&nbsp;&nbsp;" aria-label="celda0">
-                    </td>
-                    <td class="celda">
-                        <input type="button" id="celda1" value="&nbsp;&nbsp;&nbsp;" aria-label="celda1">
-                    </td>
-                    <td class="celda">
-                        <input type="button" id="celda2" value="&nbsp;&nbsp;&nbsp;" aria-label="celda2">
-                    </td>
-                </tr>
-                <tr>
-                    <td class="celda">
-                        <input type="button" id="celda3" value="&nbsp;&nbsp;&nbsp;" aria-label="celda3">
-                    </td>
-                    <td class="celda">
-                        <input type="button" id="celda4" value="&nbsp;&nbsp;&nbsp;" aria-label="celda4">
-                    </td>
-                    <td class="celda">
-                        <input type="button" id="celda5" value="&nbsp;&nbsp;&nbsp;" aria-label="celda5">
-                    </td>
-                </tr>
-                <tr>
-                    <td class="celda">
-                        <input type="button" id="celda6" value="&nbsp;&nbsp;&nbsp;" aria-label="celda6">
-                    </td>
-                    <td class="celda">
-                        <input type="button" id="celda7" value="&nbsp;&nbsp;&nbsp;" aria-label="celda7">
-                    </td>
-                    <td class="celda">
-                        <input type="button" id="celda8" value="&nbsp;&nbsp;&nbsp;" aria-label="celda8">
-                    </td>
-                </tr>
-            </table>
+            <!-- Los botones tienen por defecto tres espacios -->
+            <div class="tablero" role="presentation">
+                <button class="celdas" id="celda0">&nbsp;&nbsp;&nbsp;</button>
+                <button class="celdas" id="celda1">&nbsp;&nbsp;&nbsp;</button>
+                <button class="celdas" id="celda2">&nbsp;&nbsp;&nbsp;</button>
+                <button class="celdas" id="celda3">&nbsp;&nbsp;&nbsp;</button>
+                <button class="celdas" id="celda4">&nbsp;&nbsp;&nbsp;</button>
+                <button class="celdas" id="celda5">&nbsp;&nbsp;&nbsp;</button>
+                <button class="celdas" id="celda6">&nbsp;&nbsp;&nbsp;</button>
+                <button class="celdas" id="celda7">&nbsp;&nbsp;&nbsp;</button>
+                <button class="celdas" id="celda8">&nbsp;&nbsp;&nbsp;</button>
+            </div>
             <p id="resultado" tabindex="0">Juega</p>
             <button id="botonVolverJugar" class="btn btn-primary mt-2" onclick="volverJugar()">Volver a
                 jugar</button>

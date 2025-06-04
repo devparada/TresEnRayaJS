@@ -77,7 +77,6 @@ function volverJugar() {
 }
 
 function comprobarValido(celda) {
-    console.log(celda.innerText);
     if (celda.innerText == espaciosValor) {
         return true;
     }

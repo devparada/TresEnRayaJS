@@ -23,7 +23,7 @@ function addEvento(celdas) {
 }
 
 function segundoJugador(celda) {
-    document.getElementById(celda).value = "O";
+    document.getElementById(celda).innerText = "O";
     document.getElementById(celda).setAttribute("disabled", "");
 }
 
