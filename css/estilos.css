@@ -6,7 +6,7 @@
 }
 
 header, main, footer, input[type="button"] {
-    background-color: #0a1e30;
+    background-color: #151F33;
     color: white;
 }
 
@@ -84,9 +84,21 @@ main div {
     margin-bottom: 0.5rem;
 }
 
-#tablero, #contadores {
+#tablero {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+#contadores {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+#tablero {
+    background-color: #111B30;
+    border: 1px solid #314158;
+    padding: 10px;
+    border-radius: 16px;
 }
 
 .celdas, .contador {

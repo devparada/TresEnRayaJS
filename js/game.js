@@ -16,136 +16,151 @@ var celdas = document.querySelectorAll(".celdas");
 var scriptCPU;
 
 window.onload = function () {
-    scriptCPU = document.querySelector("#scriptCPU");
-    if (scriptCPU) {
-        contadores();
-    }
-}
+  scriptCPU = document.querySelector("#scriptCPU");
+  if (scriptCPU) {
+    contadores();
+  }
+};
 
 function contadores() {
-    document.querySelector("#contadorCPU").innerText = localStorage.getItem("victoriasCPU") ? localStorage.getItem("victoriasCPU") : 0;
-    document.querySelector("#contadorEmpates").innerText = localStorage.getItem("empates") ? localStorage.getItem("empates") : 0;
-    document.querySelector("#contadorTu").innerText = localStorage.getItem("victoriasTu") ? localStorage.getItem("victoriasTu") : 0;
+  document.querySelector("#contadorCPU").innerText = localStorage.getItem(
+    "victoriasCPU"
+  )
+    ? localStorage.getItem("victoriasCPU")
+    : 0;
+  document.querySelector("#contadorTu").innerText = localStorage.getItem(
+    "victoriasTu"
+  )
+    ? localStorage.getItem("victoriasTu")
+    : 0;
 }
 
 function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms))
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 function primerJugador(celda) {
-    document.getElementById(celda).innerText = "X";
-    document.getElementById(celda).setAttribute("disabled", "");
+  document.getElementById(celda).innerText = "X";
+  document.getElementById(celda).setAttribute("disabled", "");
 }
 
 async function colorearResultado(celda0, celda1, celda2, estado) {
-    // Red
-    let color = "#EB6F6F";
-    if (estado) {
-        // Green
-        color = "#29DC27";
-    }
-    let textColor = "black";
-    await sleep(150);
+  // Red
+  let color = "#EB6F6F";
+  if (estado) {
+    // Green
+    color = "#29DC27";
+  }
+  let textColor = "black";
+  await sleep(150);
 
-    // Para dar el color en el botón
-    celda0.style.backgroundColor = color;
-    celda1.style.backgroundColor = color;
-    celda2.style.backgroundColor = color;
-    // Para dar el color en el texto del botón
-    celda0.style.color = textColor;
-    celda1.style.color = textColor;
-    celda2.style.color = textColor;
+  // Para dar el color en el botón
+  celda0.style.backgroundColor = color;
+  celda1.style.backgroundColor = color;
+  celda2.style.backgroundColor = color;
+  // Para dar el color en el texto del botón
+  celda0.style.color = textColor;
+  celda1.style.color = textColor;
+  celda2.style.color = textColor;
 }
 
 function mostrarResultado(estado) {
-    let texto = estado ? "Has ganado" : "Has perdido";
+  let texto = estado ? "Has ganado" : "Has perdido";
 
-    if (scriptCPU) {
-        let clave = estado ? "victoriasTu" : "victoriasCPU";
-        localStorage.setItem(clave, Number(localStorage.getItem(clave)) + 1);
-    }
+  if (scriptCPU) {
+    let clave = estado ? "victoriasTu" : "victoriasCPU";
+    localStorage.setItem(clave, Number(localStorage.getItem(clave)) + 1);
+  }
 
-    elemResultado.innerText = texto;
-    comprobarEstadoPartida();
+  elemResultado.innerText = texto;
+  comprobarEstadoPartida();
 }
 
 function mostrarEmpate() {
-    let texto = "Empate"
-    elemResultado.innerText = texto;
+  let texto = "Empate";
+  elemResultado.innerText = texto;
 }
 
 function limpiarTablero() {
-    celdas.forEach((celda) => {
-        celda.style.backgroundColor = "";
-        celda.style.color = "";
-        celda.innerText = espaciosValor;
-        celda.removeAttribute("disabled");
-    });
-    celdas = document.querySelectorAll(".celdas");
+  celdas.forEach((celda) => {
+    celda.style.backgroundColor = "";
+    celda.style.color = "";
+    celda.innerText = espaciosValor;
+    celda.removeAttribute("disabled");
+  });
+  celdas = document.querySelectorAll(".celdas");
 }
 
 function volverJugar() {
-    limpiarTablero();
-    elemResultado.innerText = "Juega";
+  limpiarTablero();
+  elemResultado.innerText = "Juega";
 
-    click = 0;
-    finPartida = false;
-    if (scriptCPU) {
-        contadores();
-    }
+  click = 0;
+  finPartida = false;
+  if (scriptCPU) {
+    contadores();
+  }
 }
 
 function comprobarValido(celda) {
-    if (celda.innerText == espaciosValor) {
-        return true;
-    }
-    return false;
+  if (celda.innerText == espaciosValor) {
+    return true;
+  }
+  return false;
 }
 
 function comprobarEstadoPartida() {
-    if (finPartida) {
-        celdas.forEach((celda) => {
-            celda.setAttribute("disabled", "");
-        });
-    }
+  if (finPartida) {
+    celdas.forEach((celda) => {
+      celda.setAttribute("disabled", "");
+    });
+  }
 }
 
 function comprobarGanador() {
-    var combinacionesGanadoras = [
-        [0, 1, 2],
-        [3, 4, 5],
-        [6, 7, 8],
-        [0, 3, 6],
-        [1, 4, 7],
-        [2, 5, 8],
-        [0, 4, 8],
-        [2, 4, 6],
-    ];
+  var combinacionesGanadoras = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6],
+  ];
 
-    for (let i = 0; i < combinacionesGanadoras.length; i++) {
-        let primerNumero = celdas[combinacionesGanadoras[i][0]];
-        let segundoNumero = celdas[combinacionesGanadoras[i][1]];
-        let tercerNumero = celdas[combinacionesGanadoras[i][2]];
+  for (let i = 0; i < combinacionesGanadoras.length; i++) {
+    let primerNumero = celdas[combinacionesGanadoras[i][0]];
+    let segundoNumero = celdas[combinacionesGanadoras[i][1]];
+    let tercerNumero = celdas[combinacionesGanadoras[i][2]];
 
-        if (primerNumero.innerText == "X" && segundoNumero.innerText == "X" && tercerNumero.innerText == "X") {
-            finPartida = true;
-            colorearResultado(primerNumero, segundoNumero, tercerNumero, true);
-            mostrarResultado(true);
-        } else if (primerNumero.innerText == "O" && segundoNumero.innerText == "O" && tercerNumero.innerText == "O") {
-            finPartida = true;
-            colorearResultado(primerNumero, segundoNumero, tercerNumero, false);
-            mostrarResultado(false);
-        }
+    if (
+      primerNumero.innerText == "X" &&
+      segundoNumero.innerText == "X" &&
+      tercerNumero.innerText == "X"
+    ) {
+      finPartida = true;
+      colorearResultado(primerNumero, segundoNumero, tercerNumero, true);
+      mostrarResultado(true);
+    } else if (
+      primerNumero.innerText == "O" &&
+      segundoNumero.innerText == "O" &&
+      tercerNumero.innerText == "O"
+    ) {
+      finPartida = true;
+      colorearResultado(primerNumero, segundoNumero, tercerNumero, false);
+      mostrarResultado(false);
     }
+  }
 
-    return finPartida;
+  return finPartida;
 }
 
 function comprobarEmpate() {
-    for (let i = 0; i < celdas.length; i++) {
-        if (celdas[i].innerText == espaciosValor) {
-            return false;
-        }
+  for (let i = 0; i < celdas.length; i++) {
+    if (celdas[i].innerText == espaciosValor) {
+      return false;
     }
-    return true;
+  }
+  return true;
 }
