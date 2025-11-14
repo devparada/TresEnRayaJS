@@ -13,6 +13,20 @@ var click = 0;
 var finPartida = false;
 var turnoBloqueado = false;
 var celdas = document.querySelectorAll(".celdas");
+var scriptCPU;
+
+window.onload = function () {
+    scriptCPU = document.querySelector("#scriptCPU");
+    if (scriptCPU) {
+        contadores();
+    }
+}
+
+function contadores() {
+    document.querySelector("#contadorCPU").innerText = localStorage.getItem("victoriasCPU") ? localStorage.getItem("victoriasCPU") : 0;
+    document.querySelector("#contadorEmpates").innerText = localStorage.getItem("empates") ? localStorage.getItem("empates") : 0;
+    document.querySelector("#contadorTu").innerText = localStorage.getItem("victoriasTu") ? localStorage.getItem("victoriasTu") : 0;
+}
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms))
@@ -44,9 +58,11 @@ async function colorearResultado(celda0, celda1, celda2, estado) {
 }
 
 function mostrarResultado(estado) {
-    let texto = "Has perdido"
-    if (estado) {
-        texto = "Has ganado";
+    let texto = estado ? "Has ganado" : "Has perdido";
+
+    if (scriptCPU) {
+        let clave = estado ? "victoriasTu" : "victoriasCPU";
+        localStorage.setItem(clave, Number(localStorage.getItem(clave)) + 1);
     }
 
     elemResultado.innerText = texto;
@@ -74,6 +90,9 @@ function volverJugar() {
 
     click = 0;
     finPartida = false;
+    if (scriptCPU) {
+        contadores();
+    }
 }
 
 function comprobarValido(celda) {
