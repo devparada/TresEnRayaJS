@@ -68,15 +68,22 @@ main div {
 }
 
 #contadores {
-    margin-bottom: 6px;
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(51 65 85 / 0.4);
+    border: 1px solid #314158;
+    border-radius: 16px;
 }
 
 .contador {
     display: flex;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    padding-left: 1.70rem;
-    padding-right: 1.70rem;
+    padding-top: 0.10rem;
+    padding-bottom: 0.10rem;
+    padding-left: 2.70rem;
+    padding-right: 2.70rem;
+    color: white;
+    border-radius: 10px;
+    margin: 4px
 }
 
 .contador p {
@@ -89,11 +96,6 @@ main div {
     grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
-#contadores {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
 #tablero {
     background-color: #111B30;
     border: 1px solid #314158;
@@ -101,7 +103,7 @@ main div {
     border-radius: 16px;
 }
 
-.celdas, .contador {
+.celdas {
     background-color: rgb(51 65 85 / 0.4);
     color: white;
     border-radius: 10px;
@@ -117,6 +119,15 @@ main div {
     margin-top: 10px;
     margin-bottom: 0px;
     font-weight: bold;
+}
+
+#botonJuego {
+    display: flex;
+    flex-direction: row;
+}
+
+#botonJuego button {
+    margin: 6px;
 }
 
 #botonVolverJugar {
