@@ -31,13 +31,6 @@ function addEvento(celdas) {
   });
 }
 
-function contarMovimientos() {
-  if (!finPartida) {
-    movimientos++;
-    document.querySelector("#movimientos").innerText = movimientos;
-  }
-}
-
 function segundoJugador() {
   if (!finPartida) {
     var maxNumero = celdas.length - 1;

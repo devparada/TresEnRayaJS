@@ -14,6 +14,7 @@ function addEvento(celdas) {
         segundoJugador(objetivo.id);
       }
 
+      contarMovimientos();
       await comprobarGanador();
 
       if (!finPartida && comprobarEmpate()) {

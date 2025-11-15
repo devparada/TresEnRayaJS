@@ -160,3 +160,10 @@ function comprobarEmpate() {
   }
   return true;
 }
+
+function contarMovimientos() {
+  if (!finPartida) {
+    movimientos++;
+    document.querySelector("#movimientos").innerText = movimientos;
+  }
+}
