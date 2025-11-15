@@ -6,17 +6,18 @@
 const elemResultado = document.querySelector("#resultado");
 const fondoCeldas = "rgb(51 65 85 / 0.4)";
 // \u00A0 -> es &nbsp; (un espacio)
-const espaciosValor = "\u00A0\u00A0\u00A0";
+const VACIO = "";
 
 // Variables
-var click = 0;
-var finPartida = false;
-var turnoBloqueado = false;
-var movimientos = 0;
+let click = 0;
+let finPartida = false;
+let turnoBloqueado = false;
+let movimientos = 0;
 var celdas = document.querySelectorAll(".celdas");
-var scriptCPU;
+let scriptCPU;
 
-window.onload = function () {
+globalThis.onload = () => {
+  localStorage.clear();
   scriptCPU = document.querySelector("#scriptCPU");
   if (scriptCPU) {
     contadores();
@@ -24,72 +25,69 @@ window.onload = function () {
 };
 
 function contadores() {
-  document.querySelector("#contadorCPU").innerText = localStorage.getItem(
-    "victoriasCPU"
-  )
-    ? localStorage.getItem("victoriasCPU")
-    : 0;
-  document.querySelector("#contadorTu").innerText = localStorage.getItem(
-    "victoriasTu"
-  )
-    ? localStorage.getItem("victoriasTu")
-    : 0;
+  ["CPU", "Tu"].forEach((tipo) => {
+    const clave = `victorias${tipo}`;
+    const valor = localStorage.getItem(clave) || 0;
+    document.querySelector(`#contador${tipo}`).innerText = valor;
+  });
 }
 
-function sleep(ms) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 function primerJugador(celda) {
-  document.getElementById(celda).innerText = "X";
-  document.getElementById(celda).setAttribute("disabled", "");
+  let celdaElement = document.getElementById(celda);
+  celdaElement.innerText = "X";
+  celdaElement.setAttribute("disabled", "");
 }
 
-async function colorearResultado(celda0, celda1, celda2, estado) {
+async function colorearResultado(c0, c1, c2, estado) {
   // Red
   let color = "#EB6F6F";
   if (estado) {
     // Green
     color = "#29DC27";
   }
+
   let textColor = "black";
   await sleep(150);
 
-  // Para dar el color en el botón
-  celda0.style.backgroundColor = color;
-  celda1.style.backgroundColor = color;
-  celda2.style.backgroundColor = color;
-  // Para dar el color en el texto del botón
-  celda0.style.color = textColor;
-  celda1.style.color = textColor;
-  celda2.style.color = textColor;
+  [c0, c1, c2].forEach((celda) => {
+    celda.style.backgroundColor = color;
+    celda.style.color = textColor;
+  });
+}
+
+function actualizarContadores(estado) {
+  const ganador = estado ? "Tu" : "CPU";
+  const clave = `victorias${ganador}`;
+  const contador = `contador${ganador}`;
+
+  let valor = Number(localStorage.getItem(clave)) || 0;
+  valor++;
+
+  localStorage.setItem(clave, valor);
+  document.getElementById(contador).innerText = valor;
 }
 
 function mostrarResultado(estado) {
-  let texto = estado ? "Has ganado" : "Has perdido";
-
-  if (scriptCPU) {
-    let clave = estado ? "victoriasTu" : "victoriasCPU";
-    localStorage.setItem(clave, Number(localStorage.getItem(clave)) + 1);
-  }
-
-  elemResultado.innerText = texto;
-  comprobarEstadoPartida();
+  elemResultado.innerText = estado ? "Has ganado" : "Has perdido";
+  if (scriptCPU) actualizarContadores(estado);
 }
 
 function mostrarEmpate() {
-  let texto = "Empate";
-  elemResultado.innerText = texto;
+  elemResultado.innerText = "Empate";
 }
 
 function limpiarTablero() {
   celdas.forEach((celda) => {
     celda.style.backgroundColor = "";
     celda.style.color = "";
-    celda.innerText = espaciosValor;
+    celda.innerText = VACIO;
     celda.removeAttribute("disabled");
   });
   celdas = document.querySelectorAll(".celdas");
+  movimientos = 0;
+  document.querySelector("#movimientos").innerText = movimientos;
 }
 
 function volverJugar() {
@@ -104,10 +102,7 @@ function volverJugar() {
 }
 
 function comprobarValido(celda) {
-  if (celda.innerText == espaciosValor) {
-    return true;
-  }
-  return false;
+  return celda.innerText === VACIO;
 }
 
 function comprobarEstadoPartida() {
@@ -118,7 +113,7 @@ function comprobarEstadoPartida() {
   }
 }
 
-function comprobarGanador() {
+async function comprobarGanador() {
   var combinacionesGanadoras = [
     [0, 1, 2],
     [3, 4, 5],
@@ -159,7 +154,7 @@ function comprobarGanador() {
 
 function comprobarEmpate() {
   for (let i = 0; i < celdas.length; i++) {
-    if (celdas[i].innerText == espaciosValor) {
+    if (celdas[i].innerText === VACIO) {
       return false;
     }
   }

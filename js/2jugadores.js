@@ -2,29 +2,34 @@
 "use strict";
 /* Las constantes, variables y funciones están en game.js */
 function addEvento(celdas) {
-    celdas.forEach((celda) => {
-        celda.addEventListener("click", (e) => {
-            var celda = e.target;
-            if (comprobarValido(celda) && !comprobarGanador() && !comprobarEmpate()) {
-                if (click % 2 === 0) {
-                    primerJugador(celda.id);
-                } else {
-                    segundoJugador(celda.id);
-                }
+  celdas.forEach((celda) => {
+    celda.addEventListener("click", async (e) => {
+      const objetivo = e.target;
 
-                if (comprobarEmpate()) {
-                    mostrarEmpate();
-                }
-                comprobarEstadoPartida();
-                click++;
-            }
-        })
+      if (!comprobarValido(objetivo) || finPartida) return;
+
+      if (click % 2 === 0) {
+        primerJugador(objetivo.id);
+      } else {
+        segundoJugador(objetivo.id);
+      }
+
+      await comprobarGanador();
+
+      if (!finPartida && comprobarEmpate()) {
+        mostrarEmpate();
+        finPartida = true;
+        comprobarEstadoPartida();
+      }
+      click++;
     });
+  });
 }
 
-function segundoJugador(celda) {
-    document.getElementById(celda).innerText = "O";
-    document.getElementById(celda).setAttribute("disabled", "");
+function segundoJugador(id) {
+  const celda = document.getElementById(id);
+  celda.innerText = "O";
+  celda.setAttribute("disabled", true);
 }
 
 addEvento(celdas);

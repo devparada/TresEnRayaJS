@@ -4,19 +4,19 @@
 function addEvento(celdas) {
   celdas.forEach((celda) => {
     celda.addEventListener("click", async (e) => {
-      var celda = e.target;
-      if (comprobarValido(celda) && !comprobarGanador() && !comprobarEmpate()) {
+      var objetivo = e.target;
+      if (comprobarValido(objetivo) && !comprobarGanador() && !comprobarEmpate()) {
         if (turnoBloqueado) {
           return;
         }
 
-        primerJugador(celda.id);
+        contarMovimientos();
+        primerJugador(objetivo.id);
         if (!comprobarGanador() || comprobarEstadoPartida()) {
           turnoBloqueado = true;
-          await sleep(450);
+          await sleep(650);
           turnoBloqueado = false;
-          segundoJugador(celda.id);
-          contarMovimientos();
+          segundoJugador();
           comprobarEstadoPartida();
           comprobarGanador();
         }

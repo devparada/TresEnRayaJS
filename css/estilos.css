@@ -106,9 +106,6 @@ main div {
 #tablero {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-#tablero {
     background-color: #111B30;
     border: 1px solid #314158;
     padding: 10px;
@@ -121,6 +118,8 @@ main div {
     color: white;
     border-radius: 10px;
     border: 1px solid gray;
+    width: 100px;
+    height: 100px;
     margin: 4px
 }
 
