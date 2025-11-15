@@ -85,9 +85,8 @@
 
     <main>
         <div class="container">
-            <h1 class="mb-2">Tres en Raya Game</h1>
-            <p>🧑 Tú contra otra persona 🧑</p>
-            <div id="tablero">
+            <h1 class="mb-6">Juego de 2 jugadores</h1>
+            <div class="mt-4" id="tablero">
                 <button class="celdas" id="celda0"></button>
                 <button class="celdas" id="celda1"></button>
                 <button class="celdas" id="celda2"></button>
@@ -98,9 +97,25 @@
                 <button class="celdas" id="celda7"></button>
                 <button class="celdas" id="celda8"></button>
             </div>
-            <p id="resultado" tabindex="0">Juega</p>
-            <button id="botonVolverJugar" class="btn btn-primary mt-2" onclick="volverJugar()">Volver a
-                jugar</button>
+            <div id="botonJuego">
+                <button id="botonVolverJugar" class="btn btn-info mt-2 mb-3" onclick="">Menú</button>
+                <button id="botonVolverJugar" class="btn btn-primary mt-2 mb-3" onclick="volverJugar()">Jugar de
+                    Nuevo</button>
+            </div>
+            <div class="mt-2" id="contadores">
+                <div class="infoDivs">
+                    <p>Movimientos</p>
+                    <p id="movimientos">0</p>
+                </div>
+                <div class="infoDivs">
+                    <p>Estado</p>
+                    <p id="resultado">Jugando</p>
+                </div>
+                <div class="infoDivs">
+                    <p>Modo</p>
+                    <p>2 jugadores</p>
+                </div>
+            </div>
             <!-- Scripts -->
             <script src="../js/game.js"></script>
             <script src="../js/2jugadores.js"></script>
