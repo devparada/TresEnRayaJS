@@ -12,6 +12,7 @@ const espaciosValor = "\u00A0\u00A0\u00A0";
 var click = 0;
 var finPartida = false;
 var turnoBloqueado = false;
+var movimientos = 0;
 var celdas = document.querySelectorAll(".celdas");
 var scriptCPU;
 
@@ -93,7 +94,7 @@ function limpiarTablero() {
 
 function volverJugar() {
   limpiarTablero();
-  elemResultado.innerText = "Juega";
+  elemResultado.innerText = "Jugando";
 
   click = 0;
   finPartida = false;

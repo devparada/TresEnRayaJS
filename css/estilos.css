@@ -73,6 +73,7 @@ main div {
     background-color: rgb(51 65 85 / 0.4);
     border: 1px solid #314158;
     border-radius: 16px;
+    margin-bottom: 10px;
 }
 
 .contador {
@@ -84,6 +85,17 @@ main div {
     color: white;
     border-radius: 10px;
     margin: 4px
+}
+
+.infoDivs {
+    display: flex;
+    padding-top: 0.10rem;
+    padding-bottom: 0.10rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    color: white;
+    border-radius: 10px;
+    margin: 6px
 }
 
 .contador p {
@@ -100,6 +112,7 @@ main div {
     background-color: #111B30;
     border: 1px solid #314158;
     padding: 10px;
+    margin-bottom: 10px;
     border-radius: 16px;
 }
 
@@ -112,12 +125,11 @@ main div {
 }
 
 .celdas:hover {
-    background-color: gray;
+    background-color: #2E4052;
+    border: 1px solid #1C72C8;
 }
 
 #resultado {
-    margin-top: 10px;
-    margin-bottom: 0px;
     font-weight: bold;
 }
 
@@ -128,6 +140,11 @@ main div {
 
 #botonJuego button {
     margin: 6px;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    border-radius: 16px;
 }
 
 #botonVolverJugar {
