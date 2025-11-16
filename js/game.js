@@ -38,6 +38,7 @@ function primerJugador(celda) {
   let celdaElement = document.getElementById(celda);
   celdaElement.innerText = "X";
   celdaElement.setAttribute("disabled", "");
+  contadorMovimientos();
 }
 
 async function colorearResultado(c0, c1, c2, estado) {
@@ -161,9 +162,8 @@ function comprobarEmpate() {
   return true;
 }
 
-function contarMovimientos() {
-  if (!finPartida) {
-    movimientos++;
-    document.querySelector("#movimientos").innerText = movimientos;
-  }
+function contadorMovimientos() {
+  if (finPartida) return;
+  movimientos++;
+  document.querySelector("#movimientos").innerText = movimientos;
 }

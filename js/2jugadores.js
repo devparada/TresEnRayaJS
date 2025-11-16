@@ -14,7 +14,6 @@ function addEvento(celdas) {
         segundoJugador(objetivo.id);
       }
 
-      contarMovimientos();
       await comprobarGanador();
 
       if (!finPartida && comprobarEmpate()) {
@@ -31,6 +30,7 @@ function segundoJugador(id) {
   const celda = document.getElementById(id);
   celda.innerText = "O";
   celda.setAttribute("disabled", true);
+  contadorMovimientos();
 }
 
 addEvento(celdas);
