@@ -4,8 +4,8 @@
 
 // Constantes
 const elemResultado = document.querySelector("#resultado");
+const elemTurnado = document.querySelector("#turnado");
 const fondoCeldas = "rgb(51 65 85 / 0.4)";
-// \u00A0 -> es &nbsp; (un espacio)
 const VACIO = "";
 
 // Variables
@@ -13,7 +13,7 @@ let click = 0;
 let finPartida = false;
 let turnoBloqueado = false;
 let movimientos = 0;
-var celdas = document.querySelectorAll(".celdas");
+let celdas = document.querySelectorAll(".celdas");
 let scriptCPU;
 
 globalThis.onload = () => {
@@ -32,23 +32,30 @@ function contadores() {
   });
 }
 
+/**
+ * Espera una cantidad de milisegundos
+ * @param {*} ms - Milisegundos a esperar
+ * @returns
+ */
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 function primerJugador(celda) {
   let celdaElement = document.getElementById(celda);
   celdaElement.innerText = "X";
   celdaElement.setAttribute("disabled", "");
+  if (scriptCPU) elemTurnado.innerText = "CPU";
+  if (!scriptCPU) elemTurnado.innerText = "Jugador 2";
   contadorMovimientos();
 }
 
 async function colorearResultado(c0, c1, c2, estado) {
-  // Red
-  let color = "#EB6F6F";
-  if (estado) {
-    // Green
-    color = "#29DC27";
-  }
+  // Colores
+  const RED = "#EB6F6F";
+  const GREEN = "#29DC27";
 
+  let color = RED;
+  if (estado) color = GREEN;
+  
   let textColor = "black";
   await sleep(150);
 
@@ -99,6 +106,9 @@ function volverJugar() {
   finPartida = false;
   if (scriptCPU) {
     contadores();
+    document.querySelector("#turnado").innerText = "Jugador";
+  } else {
+    document.querySelector("#turnado").innerText = "Jugador 1";
   }
 }
 
@@ -154,6 +164,8 @@ async function comprobarGanador() {
 }
 
 function comprobarEmpate() {
+  if (finPartida) return;
+
   for (let i = 0; i < celdas.length; i++) {
     if (celdas[i].innerText === VACIO) {
       return false;

@@ -4,8 +4,7 @@
 function addEvento(celdas) {
   celdas.forEach((celda) => {
     celda.addEventListener("click", async (e) => {
-      const objetivo = e.target;
-
+      let objetivo = e.target;
       if (!comprobarValido(objetivo) || finPartida) return;
 
       if (click % 2 === 0) {
@@ -31,6 +30,7 @@ function segundoJugador(id) {
   celda.innerText = "O";
   celda.setAttribute("disabled", true);
   contadorMovimientos();
+  elemTurnado.innerText = "Jugador 1";
 }
 
 addEvento(celdas);

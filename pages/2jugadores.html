@@ -35,12 +35,9 @@
     </noscript>
     <!-- Hojas de estilo -->
     <link href="../css/estilos.css" rel="stylesheet">
+    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <noscript>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-            integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    </noscript>
     <link rel="manifest" href="/manifest.json">
 </head>
 
@@ -73,7 +70,7 @@
                             <a href="cpu.html" class="nav-link text-white px-3 py-2">💻 CPU</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link text-white active px-3 py-2" aria-current="active">🧑 2
+                            <a href="#" class="nav-link text-white active px-3 py-2" aria-current="page">🧑 2
                                 jugadores</a>
                         </li>
                 </div>
@@ -85,7 +82,11 @@
 
     <main>
         <div class="container">
-            <h1 class="mb-6">Juego de 2 jugadores</h1>
+            <h1 class="mt-4 mb-6">Juego de 2 jugadores</h1>
+            <div class="mt-2" id="turnos">
+                <p id="tituloTurnado">Turno</p>
+                <p id="turnado">Jugador 1</p>
+            </div>
             <div class="mt-4" id="tablero">
                 <button class="celdas" id="celda0"></button>
                 <button class="celdas" id="celda1"></button>

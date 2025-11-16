@@ -4,7 +4,7 @@
 function addEvento(celdas) {
   celdas.forEach((celda) => {
     celda.addEventListener("click", async (e) => {
-      var objetivo = e.target;
+      let objetivo = e.target;
       if (comprobarValido(objetivo) && !comprobarEmpate()) {
         if (turnoBloqueado) {
           return;
@@ -13,11 +13,10 @@ function addEvento(celdas) {
         primerJugador(objetivo.id);
         if (comprobarGanador() || comprobarEstadoPartida()) {
           turnoBloqueado = true;
-          await sleep(450);
+          await sleep(550);
           turnoBloqueado = false;
           segundoJugador();
           comprobarEstadoPartida();
-          comprobarGanador();
         }
 
         if (comprobarEmpate()) {
@@ -32,7 +31,7 @@ function addEvento(celdas) {
 function segundoJugador() {
   if (finPartida) return;
 
-  const inteligente = Math.random() < 0.5;
+  const inteligente = Math.random() < 0.6;
 
   if (inteligente) {
     // Intenta ganar
@@ -54,13 +53,15 @@ function segundoJugador() {
   } else {
     movimientoRandom();
   }
+
+  elemTurnado.innerText = "Jugador";
 }
 
 /**
- * 
+ *
  * Encuentra un movimiento ganador o bloqueador para el símbolo pasado como parámetro
  * @param {*} simbolo El simbolo a buscar ("X" o "O")
- * @returns 
+ * @returns
  */
 function encontrarMovimiento(simbolo) {
   const combinaciones = [
@@ -75,7 +76,9 @@ function encontrarMovimiento(simbolo) {
   ];
 
   for (let combinacion of combinaciones) {
-    const valores = combinacion.map((id) => document.getElementById(id).innerText);
+    const valores = combinacion.map(
+      (id) => document.getElementById(id).innerText
+    );
 
     // Si hay 2 celdas con letras y 1 vacío: oportunidad de ganar o bloquear
     if (
@@ -91,7 +94,7 @@ function encontrarMovimiento(simbolo) {
 }
 
 /**
- * 
+ *
  * Realiza el movimiento en la celda pasada como parámetro
  * @param {*} celda La celda donde se realiza el movimiento
  */
@@ -105,9 +108,9 @@ function realizarMovimiento(celda) {
 }
 
 /**
- * 
+ *
  * Hace un movimiento aleatorio en una celda libre
- * @returns 
+ * @returns
  */
 function movimientoRandom() {
   let celdasLibres = Array.from(celdas).filter((c) => c.innerText === VACIO);

@@ -35,12 +35,9 @@
     </noscript>
     <!-- Hojas de estilo -->
     <link href="css/estilos.css" rel="stylesheet">
+    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <noscript>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-            integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    </noscript>
     <link rel="manifest" href="/manifest.json">
 </head>
 
@@ -67,7 +64,7 @@
                 <div class="collapse navbar-collapse mt-1" id="navbarMovil">
                     <ul class="nav-pills navbar-nav d-flex flex-row align-items-center justify-content-center gap-1">
                         <li class="nav-item">
-                            <a href="#" class="nav-link text-white active px-3 py-2" aria-current="active">🏠 Inicio</a>
+                            <a href="#" class="nav-link text-white active px-3 py-2" aria-current="page">🏠 Inicio</a>
                         </li>
                         <li class="nav-item">
                             <a href="pages/cpu.html" class="nav-link text-white px-3 py-2">💻 CPU</a>
@@ -85,11 +82,11 @@
     <main>
         <div class="container">
             <img src="img/favicon.png" alt="Logotipo" width="100">
-            <h1 class="m-1">Tres en Raya Game</h1>
+            <h1 class="m-1" id="tituloJuego">Tres en Raya Game</h1>
             <p class="m-2">Selecciona un modo de juego</p>
             <div class="container d-flex justify-content-center flex-row gap-3 m-3">
-                <button class="botones btn btn-primary px-4 py-2" id="boton-cpu">💻 CPU</button>
-                <button class="botones btn btn-primary px-4 py-2" id="boton-2jugadores">🧑 2 jugadores</button>
+                <button class="botones btn btn-primary" id="boton-cpu">💻 CPU</button>
+                <button class="botones btn btn-primary" id="boton-2jugadores">🧑 2 jugadores</button>
             </div>
         </div>
         <!-- Script -->
@@ -100,11 +97,9 @@
         <div class="container py-3">
             <p class="mb-2">Hecho por <a href="https://github.com/devparada" class="link-info">devparada</a> ❤️
                 para la comunidad</p>
-            <a href="https://github.com/devparada/TresEnRayaJS" class="link-info">Código fuente</a> de este juego
-            <p class="mt-2">Este juego está desplegado en 🌐 Vercel</p>
-        </div>
+            </div>
     </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
 </body>

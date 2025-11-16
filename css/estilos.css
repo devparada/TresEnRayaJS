@@ -67,6 +67,14 @@ main div {
     text-align: center;
 }
 
+#tituloJuego {
+    font-size: 3rem;
+}
+
+#boton-cpu, #boton-2jugadores {
+    padding: 1rem 2.5rem 1rem 2.5rem;
+}
+
 #contadores {
     display: flex;
     flex-direction: row;
@@ -76,7 +84,18 @@ main div {
     margin-bottom: 10px;
 }
 
-.contador {
+#turnos {
+    background-color: rgb(51 65 85 / 0.4);
+    border: 1px solid #314158;
+    width: 350px;
+}
+
+#tituloTurnado {
+    padding: 4px;
+    margin-top: 10px;
+}
+
+.contador, #turnos {
     display: flex;
     padding-top: 0.10rem;
     padding-bottom: 0.10rem;
