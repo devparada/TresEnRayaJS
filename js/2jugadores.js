@@ -30,7 +30,7 @@ function segundoJugador(id) {
   celda.innerText = "O";
   celda.setAttribute("disabled", true);
   contadorMovimientos();
-  elemTurnado.innerText = "Jugador 1";
+  elemTurnado.innerText = jugador1cadena;
 }
 
 addEvento(celdas);

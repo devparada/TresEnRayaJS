@@ -83,8 +83,8 @@
         <div class="container">
             <h1 class="mt-4 mb-6">Jugando contra CPU</h1>
             <div class="mt-2" id="turnos">
-                <p id="tituloTurnado">Turno</ptituloTurnado>
-                <p id="turnado">Jugador</p>
+                <p id="tituloTurnado">TURNO</ptituloTurnado>
+                <p id="turnado">👤 Jugador</p>
             </div>
             <div class="mt-4" id="tablero">
                 <button class="celdas" id="celda0"></button>
@@ -98,32 +98,32 @@
                 <button class="celdas" id="celda8"></button>
             </div>
             <div id="botonJuego">
-                <button id="botonVolverJugar" class="btn btn-info mt-2 mb-3" onclick="">Menú</button>
+                <button id="botonVolverJugar" class="btn btn-info mt-2 mb-3" onclick="menuBoton()">Menú</button>
                 <button id="botonVolverJugar" class="btn btn-primary mt-2 mb-3" onclick="volverJugar()">Jugar de
                     Nuevo</button>
             </div>
             <div class="mt-2" id="contadores">
                 <div class="contador">
-                    <p>Victorias CPU</p>
+                    <p>Victorias X</p>
                     <p id="contadorCPU">0</p>
                 </div>
                 <div class="contador">
-                    <p>Victorias Tú</p>
+                    <p>Victorias O</p>
                     <p id="contadorTu">0</p>
                 </div>
             </div>
             <div class="mt-2" id="contadores">
                 <div class="infoDivs">
                     <p>Movimientos</p>
-                    <p id="movimientos">0</p>
+                    <span id="movimientos">0</span>
                 </div>
                 <div class="infoDivs">
                     <p>Estado</p>
-                    <p id="resultado">Jugando</p>
+                    <span id="resultado">Jugando</span>
                 </div>
                 <div class="infoDivs">
                     <p>Modo</p>
-                    <p>CPU</p>
+                    <span id="modo">CPU</span>
                 </div>
             </div>
             <!-- Scripts -->

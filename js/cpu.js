@@ -54,7 +54,7 @@ function segundoJugador() {
     movimientoRandom();
   }
 
-  elemTurnado.innerText = "Jugador";
+  elemTurnado.innerText = jugadorcadena;
 }
 
 /**

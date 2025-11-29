@@ -5,13 +5,20 @@
     font-family: "Roboto", "Arial", sans-serif;
 }
 
-header, main, footer, input[type="button"] {
-    background-color: #151F33;
+:root {
+    --fondo-principal-bg: #151F33;
+    --fondo-secundario-bg: #111B30;
+    --fondo-header-bg: #172A45;
+    --border-color: #314158;
+}
+
+main, footer, input[type="button"] {
+    background-color: var(--fondo-principal-bg);
     color: white;
 }
 
 header {
-    background-color: #172a45;
+    background-color: var(--fondo-header-bg);
 }
 
 body {
@@ -78,21 +85,33 @@ main div {
 #contadores {
     display: flex;
     flex-direction: row;
-    background-color: rgb(51 65 85 / 0.4);
+    background-color: var(--fondo-secundario-bg);
     border: 1px solid #314158;
     border-radius: 16px;
     margin-bottom: 10px;
+    width: 350px;
+}
+
+#contadores > * {
+    flex: 1 0 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 #turnos {
-    background-color: rgb(51 65 85 / 0.4);
+    background: linear-gradient(to right, rgba(37, 99, 235, 0.2), rgba(234, 88, 12, 0.2));
     border: 1px solid #314158;
+    font-size: 1.5rem;
     width: 350px;
 }
 
 #tituloTurnado {
     padding: 4px;
     margin-top: 10px;
+    margin-bottom: -0.2rem;
+    font-size: 0.9rem;
+    color: gray;
 }
 
 .contador, #turnos {
@@ -117,6 +136,17 @@ main div {
     margin: 6px
 }
 
+.infoDivs p, .infoDivs span {
+    margin-top: 0rem;
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.infoDivs span {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
 .contador p {
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
@@ -125,15 +155,15 @@ main div {
 #tablero {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    background-color: #111B30;
-    border: 1px solid #314158;
+    background-color: var(--fondo-secundario-bg);
+    border: 1px solid var(--border-color);
     padding: 10px;
     margin-bottom: 10px;
     border-radius: 16px;
 }
 
 .celdas {
-    background-color: rgb(51 65 85 / 0.4);
+    background-color: #33415566;
     color: white;
     border-radius: 10px;
     border: 1px solid gray;
@@ -175,6 +205,19 @@ main div {
 .footer {
     padding-top: 10px;
     text-align: center;
+}
+
+#contadorTu, #contadorCPU, #contadorX, #contadorO {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+#resultado, #contadorCPU, #contadorX, #contadorO {
+    color: mediumturquoise;
+}
+
+#modo, #contadorTu, #contadorO {
+    color: orange;
 }
 
 /* Para móviles, tablets y ordenadores */

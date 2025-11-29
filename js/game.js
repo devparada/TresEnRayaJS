@@ -5,7 +5,11 @@
 // Constantes
 const elemResultado = document.querySelector("#resultado");
 const elemTurnado = document.querySelector("#turnado");
-const fondoCeldas = "rgb(51 65 85 / 0.4)";
+const fondoCeldas = "#33415566";
+const jugadorcadena = "👤 Jugador";
+const cpuCadena = "🤖 CPU";
+const jugador1cadena = "👤 X";
+const jugador2cadena = "👤 O";
 const VACIO = "";
 
 // Variables
@@ -43,8 +47,8 @@ function primerJugador(celda) {
   let celdaElement = document.getElementById(celda);
   celdaElement.innerText = "X";
   celdaElement.setAttribute("disabled", "");
-  if (scriptCPU) elemTurnado.innerText = "CPU";
-  if (!scriptCPU) elemTurnado.innerText = "Jugador 2";
+  if (scriptCPU) elemTurnado.innerText = cpuCadena;
+  if (!scriptCPU) elemTurnado.innerText = jugador2cadena;
   contadorMovimientos();
 }
 
@@ -78,7 +82,8 @@ function actualizarContadores(estado) {
 }
 
 function mostrarResultado(estado) {
-  elemResultado.innerText = estado ? "Has ganado" : "Has perdido";
+  document.getElementById("tituloTurnado").innerText = "GANADOR:";
+  document.getElementById("turnado").innerText = estado ? jugadorcadena : cpuCadena;
   if (scriptCPU) actualizarContadores(estado);
 }
 
@@ -95,6 +100,7 @@ function limpiarTablero() {
   });
   celdas = document.querySelectorAll(".celdas");
   movimientos = 0;
+  document.querySelector("#tituloTurnado").innerText = "TURNO";
   document.querySelector("#movimientos").innerText = movimientos;
 }
 
@@ -106,9 +112,7 @@ function volverJugar() {
   finPartida = false;
   if (scriptCPU) {
     contadores();
-    document.querySelector("#turnado").innerText = "Jugador";
-  } else {
-    document.querySelector("#turnado").innerText = "Jugador 1";
+    document.querySelector("#turnado").innerText = jugadorcadena;
   }
 }
 
@@ -121,11 +125,12 @@ function comprobarEstadoPartida() {
     celdas.forEach((celda) => {
       celda.setAttribute("disabled", "");
     });
+    document.querySelector("#resultado").innerText = "Fin";
   }
 }
 
 async function comprobarGanador() {
-  var combinacionesGanadoras = [
+  const combinacionesGanadoras = [
     [0, 1, 2],
     [3, 4, 5],
     [6, 7, 8],
@@ -178,4 +183,8 @@ function contadorMovimientos() {
   if (finPartida) return;
   movimientos++;
   document.querySelector("#movimientos").innerText = movimientos;
+}
+
+function menuBoton() {
+  globalThis.location.href = "../index.html";
 }

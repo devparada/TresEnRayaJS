@@ -84,8 +84,8 @@
         <div class="container">
             <h1 class="mt-4 mb-6">Juego de 2 jugadores</h1>
             <div class="mt-2" id="turnos">
-                <p id="tituloTurnado">Turno</p>
-                <p id="turnado">Jugador 1</p>
+                <p id="tituloTurnado">TURNO</p>
+                <p id="turnado">👤 X</p>
             </div>
             <div class="mt-4" id="tablero">
                 <button class="celdas" id="celda0"></button>
@@ -99,22 +99,32 @@
                 <button class="celdas" id="celda8"></button>
             </div>
             <div id="botonJuego">
-                <button id="botonVolverJugar" class="btn btn-info mt-2 mb-3" onclick="">Menú</button>
+                <button id="botonVolverJugar" class="btn btn-info mt-2 mb-3" onclick="menuBoton()">Menú</button>
                 <button id="botonVolverJugar" class="btn btn-primary mt-2 mb-3" onclick="volverJugar()">Jugar de
                     Nuevo</button>
+            </div>
+                        <div class="mt-2" id="contadores">
+                <div class="contador">
+                    <p>Victorias X</p>
+                    <p id="contadorX">0</p>
+                </div>
+                <div class="contador">
+                    <p>Victorias O</p>
+                    <p id="contadorO">0</p>
+                </div>
             </div>
             <div class="mt-2" id="contadores">
                 <div class="infoDivs">
                     <p>Movimientos</p>
-                    <p id="movimientos">0</p>
+                    <span id="movimientos">0</span>
                 </div>
                 <div class="infoDivs">
                     <p>Estado</p>
-                    <p id="resultado">Jugando</p>
+                    <span id="resultado">Jugando</span>
                 </div>
                 <div class="infoDivs">
                     <p>Modo</p>
-                    <p>2 jugadores</p>
+                    <span id="modo">2P</span>
                 </div>
             </div>
             <!-- Scripts -->
@@ -127,9 +137,7 @@
         <div class="container py-3">
             <p class="mb-2">Hecho por <a href="https://github.com/devparada" class="link-info">devparada</a> ❤️
                 para la comunidad</p>
-            <a href="https://github.com/devparada/TresEnRayaJS" class="link-info">Código fuente</a> de este juego
-            <p class="mt-2">Este juego está desplegado en 🌐 Vercel</p>
-        </div>
+            </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
