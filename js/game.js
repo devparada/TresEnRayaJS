@@ -59,7 +59,7 @@ async function colorearResultado(c0, c1, c2, estado) {
 
   let color = RED;
   if (estado) color = GREEN;
-  
+
   let textColor = "black";
   await sleep(150);
 
@@ -69,8 +69,13 @@ async function colorearResultado(c0, c1, c2, estado) {
   });
 }
 
-function actualizarContadores(estado) {
-  const ganador = estado ? "Tu" : "CPU";
+function actualizarContadores(estado, modo) {
+  let ganador = "";
+  if (modo == "CPU") {
+    ganador = estado ? "Tu" : "CPU";
+  } else {
+    ganador = estado ? "X" : "O";
+  }
   const clave = `victorias${ganador}`;
   const contador = `contador${ganador}`;
 
@@ -83,8 +88,13 @@ function actualizarContadores(estado) {
 
 function mostrarResultado(estado) {
   document.getElementById("tituloTurnado").innerText = "GANADOR:";
-  document.getElementById("turnado").innerText = estado ? jugadorcadena : cpuCadena;
-  if (scriptCPU) actualizarContadores(estado);
+  if (scriptCPU) {
+    elemTurnado.innerText = estado ? jugadorcadena : cpuCadena;
+    actualizarContadores(estado, "CPU");
+  } else {
+    elemTurnado.innerText = estado ? jugador1cadena : jugador2cadena;
+    actualizarContadores(estado, "2J");
+  }
 }
 
 function mostrarEmpate() {
