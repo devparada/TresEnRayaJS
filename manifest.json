@@ -10,7 +10,7 @@
   "orientation": "portrait",
   "icons": [
     {
-      "src": "img/icon-144.png",
+      "src": "assets/img/icon-144.png",
       "sizes": "144x144",
       "type": "image/png",
       "purpose": "any"
@@ -18,13 +18,13 @@
   ],
   "screenshots": [
     {
-      "src": "img/screenshot-1280.png",
+      "src": "assets/img/screenshot-1280.png",
       "sizes": "1280x640",
       "type": "image/png",
       "form_factor": "wide"
     },
     {
-      "src": "img/screenshot-360.png",
+      "src": "assets/img/screenshot-360.png",
       "sizes": "360x744",
       "type": "image/png",
       "form_factor": "narrow"
