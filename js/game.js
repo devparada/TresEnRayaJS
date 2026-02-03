@@ -198,3 +198,12 @@ function contadorMovimientos() {
 function menuBoton() {
   globalThis.location.href = "../index.html";
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+  // Configuramos Twemoji
+  twemoji.parse(document.body, {
+    folder: 'svg',
+    ext: '.svg'
+  });
+});
+

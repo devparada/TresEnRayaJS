@@ -60,6 +60,13 @@
     --border-color: #314158;
 }
 
+img.emoji {
+    height: 1em;
+    width: 1em;
+    margin: 0 .05em 0 .1em;
+    vertical-align: -0.1em;
+}
+
 main, footer, input[type="button"] {
     background-color: var(--fondo-principal-bg);
     color: white;
