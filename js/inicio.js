@@ -11,12 +11,3 @@ botonCPU.addEventListener("click", function () {
 boton2Jugadores.addEventListener("click", function () {
     globalThis.location.href = "pages/2jugadores.html";
 });
-
-document.addEventListener('DOMContentLoaded', function () {
-    // Configuramos Twemoji
-    twemoji.parse(document.body, {
-        folder: 'svg',
-        ext: '.svg'
-    });
-});
-
