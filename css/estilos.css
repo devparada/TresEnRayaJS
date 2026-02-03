@@ -1,49 +1,49 @@
 /* Roboto 300 Normal */
 @font-face {
-  font-family: 'Roboto';
-  src: url('/assets/fonts/Roboto-Light.tff') format('tff');
-  font-weight: 300;
-  font-style: normal;
+    font-family: 'Roboto';
+    src: url('/assets/fonts/Roboto-Light.tff') format('tff');
+    font-weight: 300;
+    font-style: normal;
 }
 
 /* Roboto 500 Normal */
 @font-face {
-  font-family: 'Roboto';
-  src: url('/assets/fonts/Roboto-Medium.tff') format('tff');
-  font-weight: 500;
-  font-style: normal;
+    font-family: 'Roboto';
+    src: url('/assets/fonts/Roboto-Medium.tff') format('tff');
+    font-weight: 500;
+    font-style: normal;
 }
 
 /* Roboto 700 Normal */
 @font-face {
-  font-family: 'Roboto';
-  src: url('/assets/fonts/Roboto-Bold.tff') format('tff');
-  font-weight: 700;
-  font-style: normal;
+    font-family: 'Roboto';
+    src: url('/assets/fonts/Roboto-Bold.tff') format('tff');
+    font-weight: 700;
+    font-style: normal;
 }
 
 /* Roboto 300 Italic */
 @font-face {
-  font-family: 'Roboto';
-  src: url('/assets/fonts/Roboto-LightItalic.tff') format('tff');
-  font-weight: 300;
-  font-style: italic;
+    font-family: 'Roboto';
+    src: url('/assets/fonts/Roboto-LightItalic.tff') format('tff');
+    font-weight: 300;
+    font-style: italic;
 }
 
 /* Roboto 500 Italic */
 @font-face {
-  font-family: 'Roboto';
-  src: url('/assets/fonts/Roboto-MediumItalic.tff') format('tff');
-  font-weight: 500;
-  font-style: italic;
+    font-family: 'Roboto';
+    src: url('/assets/fonts/Roboto-MediumItalic.tff') format('tff');
+    font-weight: 500;
+    font-style: italic;
 }
 
 /* Roboto 700 Italic */
 @font-face {
-  font-family: 'Roboto';
-  src: url('/assets/fonts/Roboto-BoldItalic.tff') format('tff');
-  font-weight: 700;
-  font-style: italic;
+    font-family: 'Roboto';
+    src: url('/assets/fonts/Roboto-BoldItalic.tff') format('tff');
+    font-weight: 700;
+    font-style: italic;
 }
 
 * {
@@ -141,13 +141,13 @@ main div {
     display: flex;
     flex-direction: row;
     background-color: var(--fondo-secundario-bg);
-    border: 1px solid #314158;
+    border: 1px solid var(--border-color);
     border-radius: 16px;
     margin-bottom: 10px;
     width: 350px;
 }
 
-#contadores > * {
+#contadores>* {
     flex: 1 0 0;
     white-space: nowrap;
     overflow: hidden;
@@ -156,7 +156,7 @@ main div {
 
 #turnos {
     background: linear-gradient(to right, rgba(37, 99, 235, 0.2), rgba(234, 88, 12, 0.2));
-    border: 1px solid #314158;
+    border: 1px solid var(--border-color);
     font-size: 1.5rem;
     width: 350px;
 }
