@@ -1,19 +1,21 @@
 <div align="center">
 
-<img src="https://github.com/devparada/TresEnRayaJS/blob/main/img/favicon.png?raw=true" width=160>
+<img src="https://github.com/devparada/TresEnRayaJS/blob/main/assets/img/favicon.png?raw=true" width=160>
 
 # TresEnRayaJS
 
 </div>
 
 > [!NOTE]
-> El ordenador (CPU) de momento no es muy inteligente, pero tengo como objetivo ir mejorando su inteligencia con el tiempo.
+> Este proyecto todavía está en desarrollo.
 
-Este repositorio es un tres en raya hecho con HTML, CSS, Bootstrap y JavaScript el cual el usuario puede ganar o perder contra el ordenador (CPU) o contra un jugador en la misma pantalla. La lógica está hecha usando JavaScript vanilla.
+¡Hola! 👋 Te doy la bienvenida a mi versión del **Tres en Raya** (o Tic-Tac-Toe).
 
-El diseño está hecho usando Bootstrap y CSS.
+Este proyecto nació como un reto personal para practicar la **manipulación del DOM** y la lógica de juegos sin depender de frameworks como React o Vue. Quería volver a las bases y ver qué podía construir solo con HTML, CSS y mucho JavaScript puro.
 
-# Tecnologias
+Actualmente, puedes echar una partida rápida contra la **CPU** o enfrentarte a un amigo en la **misma pantalla**. ¡Espero que te diviertas probándolo!
+
+## Tecnologias usadas
 
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
@@ -23,4 +25,4 @@ El diseño está hecho usando Bootstrap y CSS.
 
 ---
 
-Hecho con :heart: para la comunidad.
+Hecho con :heart: para la comunidad por [devparada](https://github.com/devparada).
